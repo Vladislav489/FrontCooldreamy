@@ -1,0 +1,255 @@
+.wrapper {
+    display: flex;
+    // border: 1px solid red;
+    padding: 5px 20px;
+    position: relative;
+
+    .id {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: red;
+        font-size: 20px;
+        line-height: 20px;
+        display: none;
+    }
+
+    .body {
+       display: flex;
+       align-items: flex-end;
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-bottom: 5px;
+
+            .bubble {
+                padding: 8px 12px;
+                border-radius: 15px;
+                display: flex;
+                align-items: flex-end;
+                max-width: 700px;
+
+                .text {
+                    font-size: 16px;
+                    line-height: 140%;
+                }
+
+                .time {
+                    line-height: 100%;
+                    color: #909093;
+                    font-size: 11px;
+                    line-height: 125%;
+                    margin-left: 15px;
+                }
+
+
+            }
+
+            .media {
+                
+                
+                .body {
+                    display: flex;
+                    flex-wrap: wrap;
+
+
+                    .item {
+                        width: 130px;
+                        height: 130px;
+                        overflow: hidden;
+                        margin: 0 5px;
+                        margin-bottom: 10px;
+                        // background-color: var(--light_purp_1);
+                        // padding: 4px;
+    
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            display: flex;
+                        }
+                    }
+                }
+                
+                .time {
+                    line-height: 100%;
+                    color: #909093;
+                    font-size: 11px;
+                    line-height: 125%;
+                    margin-left: 15px;
+                    text-align: right;
+                    
+                }
+            }
+
+            .ex {
+                text-align: right;
+                font-size: 10px;
+                line-height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: absolute;
+                bottom: -10px;
+                right: 0;
+
+
+                .icon {
+                    color: var(--violet);
+                    line-height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 18px;
+                }
+            }
+
+
+
+            .ex.unread {
+                .icon {
+                    color: var(--gray);
+                }
+            }
+            
+
+            
+        }    
+
+        .avatar {
+            cursor: pointer;
+        }
+
+        .avatar.hide {
+            opacity: 0;
+        }
+
+    }
+
+    .body.me {
+        
+
+        .avatar {
+            margin-left: 15px;
+        }
+
+        .message {
+            .bubble {
+                background: #F0EBFF;
+            }
+        }
+    }
+
+    .body.you {
+
+        .avatar {
+            margin-right: 15px;
+        }
+
+        .message {
+
+            .bubble {
+                background: #F0F0F0;
+            }
+        }
+    }
+}
+
+.wrapper.left {
+    justify-content: flex-start;
+}
+
+.wrapper.right {
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+
+    .wrapper {
+        padding: 0 5px;
+
+        .body {
+
+            .message {
+                padding-bottom: 3px !important;
+                .bubble {
+
+                    .text {
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+
+                    .time {
+                        font-size: 8px;
+                        line-height: 10px;
+                        margin-left: 8px;
+                    }
+                }
+
+                .ex {
+                    .label {
+                        display: none;
+                    }
+                }
+
+                .media {
+                    .body {
+                        .item {
+                            width: 80px;
+                            height: 80px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .body.me {
+
+            .message {
+
+                .bubble {
+                 
+
+                    
+                }
+            }
+            .avatar {
+                margin-left: 10px;
+            }
+        }
+        .body.you {
+
+            .message {
+
+            }
+            .avatar {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .wrapper {
+        .body {
+            .message {
+                .bubble {
+                    max-width: 275px;
+                }
+
+                .ex {
+                    bottom: 0;
+                }
+            }
+        }
+    }
+}

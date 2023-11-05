@@ -1,0 +1,17 @@
+.ant-picker {
+    border: 2px solid var(--light_purp_2);
+    border-radius: 30px;
+    &:hover {
+        border: 2px solid var(--light_purp_2);
+    }
+    .ant-picker-input {
+        input {
+            font-size: 18px !important;
+            line-height: 150% !important;
+        }
+    }
+}
+
+.ant-picker.ant-picker-focused {
+    box-shadow: 0 0 0 3px rgba(#D9D4FF, .7);
+}

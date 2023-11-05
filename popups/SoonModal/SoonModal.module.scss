@@ -1,0 +1,33 @@
+.wrapper {
+
+
+    .img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+        }
+    }
+
+    .title {
+        font-weight: 700;
+        color: var(--violet);
+        font-size: 25px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

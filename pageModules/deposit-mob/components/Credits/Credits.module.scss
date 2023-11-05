@@ -1,0 +1,482 @@
+.wrapper {
+
+  .top {
+      margin-bottom: 60px;
+
+      .head {
+          text-align: center;
+          margin-bottom: 8px;
+      }
+      .balance {
+          text-align: center;
+          margin-bottom: 30px;
+
+          span {
+              color: var(--violet);
+              font-weight: 700;
+          }
+      }
+      .list.one {
+          margin-bottom: 30px;
+          margin-left: 0;
+          margin-right: 0;
+
+          .item_wr {
+              max-width: 500px;
+              width: 100%;
+              margin: 0 auto;
+              .item {
+                  
+
+              
+            //   background-image: url('../../../../public/assets/images/promo-bg.svg');
+            background-image: url('../../../../public/assets/images/promo-mob-bg.svg');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              min-height: 140px;
+
+              .kl {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+              }
+
+              .discount {
+                  position: absolute;
+
+              }
+
+              .badge {
+                  width: 230px;
+                  padding: 4px 12px;
+                  background: #DA8DF9;
+                  border-radius: 12px;
+                  position: absolute;
+                  top: -15px;
+                  left: calc(50% - (230px / 2));
+                  font-size: 12px;
+                  font-weight: 700;
+                  color: #fff;
+                  text-transform: uppercase;
+              }
+
+              .credits {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+
+                  .value {
+                      color: #fff;
+                      font-weight: 700;
+                      font-size: 40px;
+                      text-align: center;
+                  }
+                  .label {
+                      text-align: center;
+                      color: #BAAEF5;
+                      font-size: 15px;
+                      font-weight: 500;
+                  }
+              }
+
+              .ex {
+                  color: #fff;
+                  font-size: 15px;
+                  margin: 0 10px;
+              }   
+
+              .price {
+                  display: flex;
+                  align-items: center;
+
+                  .old {
+                      text-decoration: line-through;
+                      color: #BAAEF5;
+                      font-size: 15px;
+                      text-decoration-color: #DA8DF9;
+                      margin: 0 5px;
+
+                  }
+
+                  .actual {
+                      color: #fff;
+                      font-size: 24px;
+                      font-weight: 700;
+
+                  }
+              }
+              }
+          }
+      }
+
+      .list {
+          display: flex;
+          margin-left: -15px;
+          margin-right: -15px;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .item_wr.active {
+              .item {
+                //   border: 4px solid #fff;
+              }
+
+              &:after {
+                  opacity: 1;
+              }
+          }
+          .item_wr {
+              width: calc((100% / 2) - 30px);
+              margin: 0 15px;
+              margin-bottom: 30px;
+              position: relative;
+
+              &:after {
+                  position: absolute;
+                  top: calc(50% - ((100% + 8px) / 2));
+                  left: calc(50% - ((100% + 8px) / 2));
+                  width: calc(100% + 8px);
+                  height: calc(100% + 8px);
+                  border-radius: 20px;
+                  background-color: #FFD89D;
+                  content: '';
+                  opacity: 0;
+                  transition: all .3s ease;
+              }
+          }
+          .item {
+              border-radius: 20px;
+              background: #F0EBFF;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+              min-height: 185px;
+              padding: 15px;
+              position: relative;
+              cursor: pointer;
+            //   border: 4px solid transparent;
+              transition: all .3s ease;
+              z-index: 3;
+
+              .adds {
+                  position: absolute;
+                  top: -15px;
+                  right: 10px;
+                  display: flex;
+                  align-items: center;
+                  margin-left: -2px;
+                  margin-right: -2px;
+              }
+
+              .discount {
+                  border-radius: 100%;
+                  width: 75px;
+                  height: 75px;
+                  //background: linear-gradient(109.07deg, #FFD89D 2.71%, #FEC979 48.42%, #FFC163 102.45%);
+                  display: flex;
+                  align-items: center;
+                  flex-direction: column;
+                  justify-content: center;
+                  background-image: url('../../../../public/assets/images/dsc-bg.svg');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: cover;
+
+                  text-align: center;
+                  color: #CF7827;
+                  font-weight: 800;
+                  font-size: 24px;
+                  line-height: 24px;
+                  // margin: 0 2px;
+                  color: #353535;
+                  position: absolute;
+                  bottom: -10px;
+                  right: -20px;
+                  transform: rotate(-15deg);
+
+
+                  span {
+                      display: block;
+                      font-size: 7px;
+                      line-height: 7px;
+                      font-weight: 700;
+                  }
+              }
+              
+
+              .badge {
+                  margin: 0 2px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #fff;
+                  border-radius: 12px;
+                  min-height: 30px;
+                  text-transform: uppercase;
+                  font-size: 12px;
+                  font-style: normal;
+                  font-weight: 700;
+                  line-height: 23px;
+                  padding: 2px 12px;
+              }
+
+              .price {
+                  margin-bottom: 10px;
+                  font-size: 18px;
+                  color: var(--violet);
+                  font-weight: 500;
+              }
+
+
+              .credits {
+                  text-align: center;
+                  //max-width: 50%;
+                  max-width: 100%;
+
+                  .value {
+                      font-size: 45px;
+                      font-weight: 700;
+                      line-height: 45px;
+                      margin-bottom: -10px;
+                      display: flex;
+                      align-items: center;
+                      .icon {
+                          color: #F19F24;
+                          font-size: 40px;
+                          line-height: 40px;
+                          display: flex;
+                          width: 40px;
+                          height: 40px;
+                          align-items: center;
+                          justify-content: center;
+                          flex: 0 0 auto;
+                      }
+                  }
+
+                  span {
+                      color: rgba(53, 53, 53, 0.50);
+                      font-size: 15px;
+                      line-height: 15px;
+                  }
+
+              }
+
+              .ex {
+                  font-size: 15px;
+              }
+
+
+              .item_body {
+                  padding-left: 12px;
+                  max-width: calc(50% - 12px);
+                  .part {
+                      font-weight: 500;
+
+                      .label {
+                          color: rgba(#646368, .65);
+                          font-size: 11px;
+                          line-height: 15px;
+                          
+                      }
+                      .value {
+                          
+                          font-weight: 600;
+                          font-size: 18px;
+                          line-height: 25px;
+                          color: var(--violet);
+                      }
+
+                      .value.old {
+                          text-decoration: line-through;
+                          text-decoration-color: #DA8DF9;
+                          color: #646368;
+                          font-size: 11px;
+                      }
+                  }
+              }
+
+              .action {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-top: 15px;
+              }
+
+              
+          }
+
+          .item.pop {
+              background-image: url('../../../../public/assets/images/deposit-2-bg.svg');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+              color: #fff;
+
+              .badge {
+                  background-color: #DA8DF9;
+              }
+              
+
+              .price {
+                  color: #fff;
+              }
+
+              .credits {
+                  span {
+                      color: rgba(255, 255, 255, 0.50);
+                  }
+              }
+
+              .item_body {
+                  .part {
+                      .label {
+                          color: #BAAEF5;
+                      }
+                      .value {
+                          color: #fff;
+                      }
+
+                      .value.old {
+                          color: #F0EBFF;
+                      }
+                  }
+              }
+          }
+
+          .item.dsc {
+              background-image: url('../../../../public/assets/images/deposit-1-bg.svg');
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: cover;
+
+              .badge {
+                  background-color: var(--violet);
+              }
+          }
+      }
+
+      .buy {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  }
+
+  .main {
+      .adv {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 12px;
+          .fr {
+              position: relative;
+              padding-left: 35px;
+
+              &:after {
+                  position: absolute;
+                  width: 25px;
+                  height: 25px;
+                  left: 0;
+                  top: calc(50% - 12.5px);
+                  content: '';
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: contain;
+                  background-image: url('../../../../public/assets/images/secure.svg');
+              }
+              font-size: 18px;
+              line-height: 120%;
+              b {
+                  display: block;
+              }
+          }
+
+          .av {
+              display: flex;
+              align-items: center;
+
+              .item {
+                  height: 70px;
+                  margin: 0 15px;
+                  img {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: contain;
+                      display: flex;
+                      
+                  }
+              }
+          }
+      }
+
+      .field {
+          // height: 350px;
+          // background: #D9D9D9;
+          // border: 1px solid red;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+  }
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+      padding-left: 10px;
+      padding-right: 10px;
+      .top {  
+          .list {
+              flex-wrap: wrap;
+
+              .item_wr {
+                  width: calc(100% - 30px);
+                  margin-bottom: 30px;
+              }
+          }            
+      }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+      .top {
+          .head,.balance {
+              display: none;
+          }
+          .list {
+              .item {
+                  min-height: 170px;
+              }
+          }
+          .list.one {
+              .item_wr {
+                  .item {
+                      background-image: url('../../../../public/assets/images/promo-mob-bg.svg');
+                  }
+              }
+          }
+          .buy {
+              position: fixed;
+              bottom: 80px;
+              left: 0;
+              width: 100%;
+              z-index: 100;
+          }
+      }
+
+      .main {
+
+          
+          .adv {
+              flex-wrap: wrap;
+              
+              .fr {
+                  margin-bottom: 10px;
+              }
+          }
+      }
+  }
+}

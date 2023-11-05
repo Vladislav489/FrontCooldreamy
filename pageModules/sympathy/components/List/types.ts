@@ -1,0 +1,1 @@
+export type sympGroupTypes = 'views' | 'favs' | 'infavs' | 'likes' | 'inlikes' | 'matches'

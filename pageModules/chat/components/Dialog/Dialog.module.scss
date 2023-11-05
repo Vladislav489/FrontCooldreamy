@@ -1,0 +1,24 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    // min-height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    flex: 1 0 auto;
+
+    .load {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding-bottom: 10px;
+        padding-top: 50px;
+    }
+}

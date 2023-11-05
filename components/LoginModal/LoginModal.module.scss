@@ -1,0 +1,23 @@
+.wrapper {
+
+    .error {
+        color: var(--red);
+        line-height: 120%;
+    }
+
+    .ex {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .item {
+            color: var(--violet);
+            transition: all .3s ease;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--purp);
+            }
+        }
+    }
+}

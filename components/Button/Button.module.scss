@@ -1,0 +1,131 @@
+.button {
+    cursor: pointer;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:disabled {
+        opacity: .7;
+        pointer-events: none;
+        touch-action: none;
+        filter:grayscale(0.7)
+    }
+
+    .before {
+        margin-right: 8px;
+        font-size: 24px;
+        line-height: 24px;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .after {
+        margin-left: 8px;
+        font-size: 24px;
+        line-height: 24px;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .load {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+
+.button.load {
+    pointer-events: none;
+    touch-action: none;
+    opacity: .8;
+    .after, .before, .text {
+        opacity: 0;
+    }
+
+    // .load {
+    //     display: flex;
+    //     align-items: center;
+
+    //     justify-content: center;
+    // }
+}
+
+.button.green {
+    background: linear-gradient(92.3deg, #53C96D 4.86%, #53CC6E 44.25%, #5DC54C 99.38%);
+    color: #fff;
+}
+
+.button.fill {
+    width: 100%;
+}
+
+.button.default {
+    color: #fff;
+    background: linear-gradient(166deg, #A058EA 0%, #6A61EC 100%);
+}
+
+.button.simple {
+    background: unset;
+    box-shadow: none !important;
+    color: var(--violet);
+    font-weight: 400;
+}
+
+.button.bordered {
+    border: 2px solid var(--violet);
+    color: var(--violet);
+    font-weight: 500;
+    background-color: #fff;
+    box-shadow: none !important;
+}
+
+.button.gold {
+    background: linear-gradient(282.57deg, #DE900B 4.74%, #FFCA0E 97.64%);
+    color:#fff;
+    // box-shadow: 0.872px 9.962px 20px rgba(255, 199, 0, 0.15);
+}
+
+.button.sm {
+    padding: 3px 8px;
+    font-size: 11px;
+    line-height: 23px;
+}
+
+.button.md {
+    padding: 10px 25px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.button.white {
+    background-color: #fff;
+    color: var(--violet);
+}
+
+.button.danger {
+    background-color: #F64949;
+
+    color: #fff;
+}
+
+.button.black {
+    background-color: #1a1a1a;
+    color: #fff;
+}

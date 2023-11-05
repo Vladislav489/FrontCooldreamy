@@ -1,0 +1,41 @@
+.Toastify {
+
+    .Toastify__toast {
+        overflow: hidden;
+        
+
+        .Toastify__toast-body {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .Toastify__toast-icon {
+            flex: 0 0 auto;
+            width: auto;
+
+        }
+
+        .Toastify__toast-icon ~ div {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .Toastify__close-button {
+            color: var(--red);
+            width: 40px;
+            flex: 0 0 auto;
+            align-self: unset !important;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .Toastify {
+
+        .Toastify__toast {
+            padding: 10px !important;
+            border-radius: 0 !important;
+        }
+
+    }
+}

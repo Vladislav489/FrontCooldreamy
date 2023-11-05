@@ -1,0 +1,45 @@
+.wrapper {
+  .in {
+    border: 2px solid #EC82FF;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .title {
+    text-align: center;
+    color: #EC82FF;
+    font-size: 21px;
+    line-height: 23px;
+    font-weight: 500;
+  }
+  .icon {
+    background-image: url('../../public/assets/icons/premium-2-icon.svg');
+    background-color: #EC82FF;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    
+    width: 57px;
+    height: 57px;
+    margin: 0 auto;
+    border-radius: 100%;
+  }
+
+  .label {
+    text-align: center;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+  }
+
+  .text {
+    text-align: center;
+    color: rgba(53, 53, 53, 0.50);
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

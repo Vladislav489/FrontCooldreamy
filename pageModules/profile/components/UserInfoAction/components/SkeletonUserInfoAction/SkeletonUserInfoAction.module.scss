@@ -1,0 +1,19 @@
+.wrapper {
+    min-height: 73px;
+    background-color: #fff;
+    border-radius: 25px;
+    width: 100%;
+    animation: sk-anim 1s linear infinite;
+}
+
+@keyframes sk-anim {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

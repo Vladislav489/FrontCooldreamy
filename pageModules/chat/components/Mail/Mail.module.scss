@@ -1,0 +1,15 @@
+.wrapper {
+    
+    width: 100%;
+    overflow-y: auto;
+
+    .list {
+        padding: 0 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 0;
+    }
+}

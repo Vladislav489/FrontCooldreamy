@@ -1,0 +1,314 @@
+.hero {
+    // min-height: calc(100vh - 75px);
+    display: flex;
+    background-color: #F9F8FF;
+    background-image: url('../../../../public/assets/images/start-hero-bg.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+
+    .inner {
+        padding: 40px 0;
+        padding-top: 100px;
+        padding-bottom: 120px;
+        position: relative;
+        height: 100%;
+        display: flex;
+
+
+        .main {
+            position: relative;
+            z-index: 3;
+            max-width: 512px;
+            flex: 0 0 auto;
+            width: 100%;
+
+            .top {
+                display: block;
+
+                .title {
+                    font-size: 60px;
+                    line-height: 60px;
+                    font-weight: 600;
+                    max-width: 1000px;
+                    margin-bottom: 20px;
+                    line-height: 57px;
+    
+                    span {
+                        font-size: 40px;
+                        // line-height: 56px;
+    
+                    }
+                }
+    
+                .subtitle {
+                    font-size: 22px;
+                    line-height: 34px;
+                    font-weight: 500;
+                    margin-top: 15px;
+                    margin-bottom: 24px;
+                }
+            }
+            
+            
+
+            .form {
+                padding: 25px;
+                border-radius: 20px;
+                background-color: #fff;
+                max-width: 420px;
+                width: 100%;
+                box-shadow: 0px 4px 33px 0px rgba(18, 11, 137, 0.08);
+
+                .sex {
+
+                    .sex_item.active {
+                        border-color: var(--violet);
+                        color: var(--violet);
+                        background-color: var(--light_purp_2);
+                    }
+
+                    .sex_item {
+                        cursor: pointer;
+                        border-radius: 30px;
+                        border: 2px solid var(--light_purp_2);
+                        padding: 10px;
+                        position: relative;
+                        padding-left: 50px;
+                        transition: all .3s ease;
+                        font-size: 18px;
+                        line-height: 150%;
+
+
+                        &:hover {
+                            border-color: var(--violet);
+                            color: var(--violet);
+                        }
+
+                        &:after {
+                            position: absolute;
+                            content: '';
+                            top: calc(50% - 15px);
+                            left: 10px;
+                            width: 30px;
+                            height: 30px;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .sex_item.male {
+                        &:after {
+                            background-image: url('../../../../public/assets/icons/male-icon.svg');
+                        }
+                    }
+                    .sex_item.female {
+                        &:after {
+                            background-image: url('../../../../public/assets/icons/female-icon.svg');
+                        }
+                    }
+                }
+
+                .terms {
+                    font-size: 15px;
+                    font-weight: 500;
+                    text-align: center;
+                    line-height: 22px;
+                    margin-top: 20px;
+                    a {
+                        color: var(--violet);
+                    }
+                }
+                
+                .action {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+
+                }
+            }
+
+            .mob {
+                display: none;
+            }
+
+            .adv {
+                margin-bottom: 35px;
+                ul {
+                    // padding-left: 25px;
+                    li {
+                        position: relative;
+                        padding-left: 35px;
+                        
+                        &:after {
+                            position: absolute;
+                            top: calc(50% - 8px);
+                            left: 0;
+                            width: 16px;
+                            height: 16px;
+                            border-radius: 100%;
+                            content: '';
+                            background-image: url('../../../../public/assets/icons/check.png');
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                        }
+                        
+                        // list-style: disc;
+                    }
+                }
+            }
+
+        }
+
+        .img {
+            width: 100%;
+            position: relative;
+
+            .img_el {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: flex;
+                }
+            }
+
+            .ind {
+                width: 180px;
+                height: 180px;
+                border-radius: 100%;
+                background-color: var(--violet);
+                position: absolute;
+                bottom: 50px;
+                right: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding-top: 15px;
+        background-image: none;
+        
+        .inner {
+            padding-bottom: 20px;
+            padding-top: 30px;
+
+            .main {
+                // margin-bottom: 30px;
+                max-width: unset;
+
+                .top {
+                    background-image: url('../../../../public/assets/images/start-hero-mob.png');
+                    background-repeat: no-repeat;
+                    background-position: top;
+                    background-size: contain;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    // height: 80vh;
+                    padding: 170px 15px 50px;
+                    position: relative;
+                    
+
+                    &:after {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 70%;
+                        //background: linear-gradient(180deg, rgba(240, 235, 255, 0.00) 0%, rgba(240, 235, 255, 0.69) 29.43%, #F0EBFF 100%);
+                        background: linear-gradient(180deg, rgba(240, 235, 255, 0.00) 0%, #F0EBFF 19.92%);
+
+                        content: '';
+                    }
+
+                    
+
+                    .title {
+                        font-size: 33px;
+                        line-height: 40px;
+                        margin-bottom: 12px;
+                        position: relative;
+                        z-index: 3;
+
+                        span {
+                            font-size: 16px;
+                            line-height: 22px;
+                        }
+                    }
+    
+                    .subtitle {
+                        font-size: 18px;
+                        line-height: 25px;
+                        margin-bottom: 0;
+                        margin-top: 0;
+                        position: relative;
+                        z-index: 3;
+                    }
+                }
+
+                .form {
+                    margin: 0 auto;
+                    margin-top: -20px;
+                    position: relative;
+                    z-index: 5;
+                    padding: 15px;
+                    border-radius: 0;
+                    margin-bottom: -20px;
+                }
+                
+
+                .selects {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .adv {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+
+
+                .form {
+                    .sex {
+                        .sex_item {
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            span {
+                                font-size: 12px;
+                                line-height: 17px;
+                                
+                            }
+                        }
+                    }
+                }
+
+                .mob {
+                    display: block;
+                    background-image: url('../../../../public/assets/images/start-hero-mob-bg.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    width: 100%;
+
+                    .mob_img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

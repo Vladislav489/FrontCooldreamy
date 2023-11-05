@@ -1,0 +1,37 @@
+.modal {
+    background-color: transparent !important;
+    
+    .ant-modal-content {
+        border-radius: 12px;
+        background-color: #fff;
+        .ant-modal-body {
+
+        }
+        // .ant-modal-footer {
+        //     display: none;
+        // }
+    }
+}
+
+.modal.purp {
+    .ant-modal-content {
+        background-color: var(--light_purp_1);
+    }
+}
+
+.modal.no-close-icon {
+    .ant-modal-close {
+        display: none;
+    }
+}
+
+.modal.close-icon-big {
+    .ant-modal-close {
+        width: 35px;
+        height: 35px;
+        span {
+            font-size: 30px;
+            line-height: 30px;
+        }
+    }
+}

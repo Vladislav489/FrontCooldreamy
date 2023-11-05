@@ -1,0 +1,181 @@
+.header {
+    padding: 12px 0;
+    // background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transition: all .3s ease;
+    
+    .inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .burger {
+            display: none;
+        }
+
+        .logo {
+            width: 115px;
+            height: 50px;
+            
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: flex;
+            }
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+
+            .locale {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .auth {
+                display: flex;
+                align-items: center;
+
+
+                .item {
+                    color: var(--violet);
+                    transition: all .3s ease;
+                    font-size: 15px;
+                    line-height: 21px;
+                    margin: 0 12px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    
+                    border: 1px solid #fff;
+                    border-radius: 20px;
+                    color: #fff;
+                    padding: 10px 40px;
+                    
+                    &:hover {
+                        color: var(--purp);
+                        border-color: var(--purp);
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            .prem {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+.header.active {
+    background-color: #fff;
+
+    .inner {
+        .main {
+            .auth {
+                .item {
+                    color: var(--purp);
+                    border-color: var(--purp);
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .header.show {
+        display: block;
+    }
+    .header {
+        height: 42px;
+        padding: 5px 0;
+        display: none;        
+        // display: none;
+
+        .inner {
+            .burger {
+                display: block;
+                width: 20px;
+                height: 15px;
+                position: relative;
+
+                span {
+                    height: 2px;
+                    border-radius: 5px;
+                    background-color: #353535;
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    transition: all .3s ease;
+
+                    &:nth-child(1) {
+                        top: 0;
+                        left: 0;
+                    }
+                    &:nth-child(2) {
+                        top: calc(50% - 1px);
+                        left: 0;
+                    }
+                    &:nth-child(3) {
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+            }
+
+            .burger.active {
+
+                span {
+                    &:nth-child(1) {
+                        top: calc(50% - 1px);
+                        transform: rotate(45deg);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                    }
+                    &:nth-child(3) {
+                        bottom: calc(50% - 1px);
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+
+            .logo {
+                width: 70px;
+                height: 30px;
+            }
+
+            .main {
+
+                .auth {
+                    // display: none;
+                    .item {
+                        font-size: 10px;
+                        line-height: 15px;
+                        margin: 0 5px;
+                        letter-spacing: 3px;
+                        padding: 5px 20px;
+                        letter-spacing: normal;
+                        color: var(--purp);
+                        border-color: var(--purp);
+                    }
+                }
+            }
+        }
+    }
+
+}

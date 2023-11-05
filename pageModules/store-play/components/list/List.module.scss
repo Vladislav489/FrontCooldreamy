@@ -1,0 +1,26 @@
+.wrapper {
+  .head {
+    margin-bottom: 10px;
+  }
+  .list {
+    padding-bottom: 15px;
+    display: flex;
+    overflow-x: auto;
+    margin-left: -5px;
+    margin-right: -5px;
+    
+    &::-webkit-scrollbar {
+      height: unset;
+      background-color: unset;
+      border-radius: unset;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: unset; 
+        border-radius: unset;
+    }
+
+    .item {
+      margin: 0 5px;
+    }
+  }
+}

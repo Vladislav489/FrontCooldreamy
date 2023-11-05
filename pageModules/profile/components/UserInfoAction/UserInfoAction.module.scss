@@ -1,0 +1,46 @@
+.wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .main {
+        
+
+        .name {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 18px;
+            display: flex;
+            align-items: center;
+
+            button {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 100%;
+                font-size: 25px;
+                margin-left: 10px;
+                color: var(--gray);
+                transition: all .3s ease;
+
+                &:hover {
+                    color: var(--violet);
+                }
+            }
+        }   
+
+        .location {
+            color: var(--gray);
+            font-size: 18px;
+            line-height: 23px;
+        }
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+        color: var(--violet);
+        font-size: 18px;
+        line-height: 23px;
+    }   
+}

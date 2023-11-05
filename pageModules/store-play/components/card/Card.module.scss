@@ -1,0 +1,271 @@
+.wrapper {
+  
+  .main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+
+    .app {
+      display: flex;
+      align-items: center;
+
+
+
+      .icon {
+        width: 66px;
+        height: 66px;
+        flex: 0 0 auto;
+        position: relative;
+
+        .circle {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          animation: round 1s linear infinite;
+
+          svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        @keyframes round {
+          0% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(180deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .circle.wait {
+          background-image: url('../../../../public/assets/icons/app-wait.svg');
+        }
+        .circle.loading {
+          background-image: unset;
+          animation: unset;
+        }
+        .circle.install {
+          background-image: url('../../../../public/assets/icons/app-install.svg');
+        }
+
+        .icon_img {
+          width: 100%;
+          
+          height: 100%;
+          overflow: hidden;
+          transition: all .2s ease;
+
+          img {
+            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: flex;
+          }
+        }
+
+      }
+
+      .icon.active {
+        .icon_img {
+          transform: scale(0.6);
+        }
+      }
+
+      .app_descr {
+        padding-left: 13px;
+
+        .app_name {
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 34px;
+        }
+        .app_vendor {
+          color: #00875F;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+
+          span {
+            color: #2E2E2E;
+          }
+        }
+        .app_opt {
+          color: #616161;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .ex {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      height: unset !important;
+      background-color: unset !important;
+      border-radius: unset !important;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: unset !important;
+        border-radius: unset !important; 
+    }
+    
+    .ex_part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px;
+      position: relative;
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+
+      &:after {
+        position: absolute;
+        top: calc(50% - 11px);
+        right: -0.5px;
+        height: 22px;
+        width: 1px;
+        background-color: #DFE0E3;
+        content: '';
+      }
+
+
+      .ex_top {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        
+
+        .ex_label {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 16px;
+          margin: 0 1px;
+
+        }
+        .ex_icon {
+          margin: 0 1px;
+          flex: 0 0 auto;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+        }
+      }
+
+      .ex_text {
+        color: #616161;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      &:nth-child(1) {
+        .ex_top {
+          .ex_icon {
+            width: 14px;
+            height: 14px;
+            background-image: url('../../../../public/assets/icons/app-ex-1.svg');
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .ex_top {
+          .ex_icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('../../../../public/assets/icons/app-ex-2.svg');
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .ex_top {
+          .ex_icon {
+            width: 30px;
+            height: 20px;
+            background-image: url('../../../../public/assets/icons/app-ex-3.svg');
+          }
+        }
+      }
+    }
+  }
+
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 20px;
+
+    &::-webkit-scrollbar {
+      height: unset !important;
+      background-color: unset !important;
+      border-radius: unset !important;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: unset !important;
+        border-radius: unset !important; 
+    }
+
+    .slide {
+      width: 93px;
+      border-radius: 10px;
+      flex: 0 0 auto;
+      margin: 0 5px;
+      height: 165px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: flex;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    .main {
+      .main_action {
+        display: none;
+      }
+    }
+    .ex {
+      .ex_part {
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

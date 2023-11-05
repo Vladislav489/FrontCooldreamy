@@ -1,0 +1,21 @@
+.card {
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #fff;
+
+    .head {
+        text-align: center;
+        font-size: 18px;
+        line-height: 140%;
+    }
+
+    .body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .action {
+        
+    }
+}

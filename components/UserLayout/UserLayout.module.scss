@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    overflow: hidden;
+    .side {
+        width: 300px;
+        padding-right: 15px;
+        flex: 0 0 auto;
+    }
+
+    .main {
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 1000px) {
+    .wrapper {
+        flex-wrap: wrap;
+
+        .side {
+            flex: unset;
+            width: 100%;
+            padding: 0;
+        }
+
+        .main {
+            width: 100%;
+        }
+    }
+}

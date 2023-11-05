@@ -1,0 +1,22 @@
+.wrapper {
+    padding: 15px;
+    width: 100%;
+    padding-bottom: 8px;
+    
+    .main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        .item {
+
+        }
+    }
+
+    .ex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

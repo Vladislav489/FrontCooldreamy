@@ -1,0 +1,32 @@
+.wrapper {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  
+  .label {
+    text-align: center;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .field {
+    padding: 10px 30px;
+    border-radius: 12px;
+    background-color: #F9F8FF;
+
+    .range {
+      margin: 0 auto;
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+
+  .gender {
+    
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

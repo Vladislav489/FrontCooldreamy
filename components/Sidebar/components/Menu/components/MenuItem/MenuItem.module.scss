@@ -1,0 +1,57 @@
+.item {
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 8px;
+    // background-color: #fff;
+    padding-right: 40px;
+    position: relative;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--light_purp_1);
+    }
+
+    .badge {
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        position: absolute;
+        top: calc(50% - 10px);
+        right: 12px;
+        background: linear-gradient(180deg, #9A58EA 0%, #6F60EC 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        font-size: 11px;line-height: 11px;
+    }
+
+
+    .icon {
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        margin-right: 8px;
+        color: #888888;
+
+    }
+
+    .label {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: var(--text);
+    }
+}
+
+.item.active {
+    background-color: var(--light_purp_1);
+}   

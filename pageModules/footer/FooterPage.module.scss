@@ -1,0 +1,25 @@
+.wrapper {
+    .title {
+        text-transform: uppercase;
+        font-size: 35px;
+        line-height: 45px;
+        margin-bottom: 25px;
+    }
+
+    .body {
+        p {
+            margin-bottom: 20px;
+            span {
+                text-transform: uppercase;
+            }
+        }
+        h3 {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+    }
+}

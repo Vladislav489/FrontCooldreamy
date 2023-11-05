@@ -1,0 +1,40 @@
+.wrapper {
+    max-width: 422px;
+    width: 100%;
+    margin: 0 auto;
+
+    .img {
+        width: 100%;
+        height: 315px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+        }
+    }
+    .body {
+        text-align: center;
+
+        .title {
+            font-size: 22px;
+            line-height: 23px;
+            margin-bottom: 15px;
+        }
+        .subtitle {
+            opacity: .5;
+            margin-bottom: 15px;
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

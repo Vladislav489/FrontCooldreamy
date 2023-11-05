@@ -1,0 +1,22 @@
+.wrapper {
+
+    .label {
+        margin-bottom: 5px;
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .info {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .item {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 23px;
+            color: var(--gray);
+        }
+    }
+}

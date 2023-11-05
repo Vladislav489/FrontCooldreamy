@@ -1,0 +1,95 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -2px;
+  margin-right: -2px;
+
+  .item {
+    max-width: 150px;
+    width: 100%;
+    margin: 0 2px;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    border-radius: 12px;
+    background: #F5F5F5;
+    border: 2px solid transparent;
+    transition: all .3s ease;
+    padding: 10px 12px;
+    transition: all .3s ease;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    .icon {
+      width: 27px;
+      height: 27px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      margin-right: 4px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .label {
+      font-weight: 400;
+    }
+  } 
+
+  .item.active {
+    font-weight: 500;
+  }
+
+  .item.premium {
+    .icon {
+      // background: radial-gradient(53.23% 53.23% at 50.00% 46.77%, #F4972A 0%, #F3BD0D 100%);
+      // background-image: url();
+      background-image: url('../../../../public/assets/icons/status-premium.svg');
+    }
+  }
+
+  .item.premium.active {
+    border-color: #FB9E13;
+    background-color: #FFEDBD;
+    .label {
+      color: #DE890B;
+    }
+  }
+
+  .item.subscribe {
+    .icon {
+      background-color: #EC82FF;
+      background-image: url('../../../../public/assets/icons/premium-adv-icon.svg');
+      background-position: center;
+      background-size: 60%;
+      background-repeat: no-repeat;
+    }
+  }
+  .item.subscribe.active {
+    border-color: #AD6DEC;
+    background-color: rgba(227, 127, 252, 0.23);
+    .label {
+      color: #AD6DEC;
+    }
+  }
+
+  .item.credits {
+    .icon {
+      // background: radial-gradient(53.23% 53.23% at 50.00% 46.77%, #9E58EA 0%, #6B60EC 100%);
+      background-image: url('../../../../public/assets/icons/status-credits.svg');
+    }
+  }
+  .item.credits.active {
+    border-color: #6862ED;
+    background-color: #F0EBFF;
+    .label {
+      color:#6862ED;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0 10px;
+
+    .body {
+        max-width: 400px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            text-align: center;font-weight: 500;
+            font-size: 21px;
+            line-height: 150%;
+            margin-bottom: 40px;
+        }
+
+        .main {
+            margin-bottom: 40px;
+            max-width: 260px;
+            width: 100%;
+            
+            .item {
+                margin-bottom: 12px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .action {
+            width: 100%;
+
+            button {
+                width: 100%;
+            }
+
+        }
+    }
+}

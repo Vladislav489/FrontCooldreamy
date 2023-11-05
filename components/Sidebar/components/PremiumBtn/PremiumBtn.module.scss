@@ -1,0 +1,30 @@
+.button {
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+    background: linear-gradient(92.47deg, #9C58EA 0.84%, #6C60EC 114.36%);
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    .icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 100%;
+        background-color: #fff;
+
+        background-image: url('../../../../public/assets/images/premium-icon.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px 20px;
+        flex: 0 0 auto;
+        margin-right: 8px;
+    }
+
+    .text {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 23px;
+        color: #fff;
+    }
+}

@@ -1,0 +1,60 @@
+.wrapper {
+    position: relative;
+    z-index: 3;
+    background-color: #fff;
+
+    .inner {
+        border-radius: 44px;
+        background-color: var(--light_purp_2);
+        overflow: hidden;
+        background-image: url('../../../../public/assets/images/adv-bg.png');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: contain;
+        min-height: 385px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .list {
+            display: flex;  
+            align-items: center;
+            justify-content: space-between;
+            margin-left: -10px;
+            margin-right: -10px;
+            max-width: 1044px;
+            width: 100%;
+                
+            .item {
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+    .wrapper {
+
+        .inner {
+
+            .list {
+                flex-wrap: wrap;
+                padding: 20px;
+
+                .item {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    margin: 0;
+                    margin-bottom: 20px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

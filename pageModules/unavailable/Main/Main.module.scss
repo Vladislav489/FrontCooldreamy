@@ -1,0 +1,27 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 100px);
+    flex-direction: column;
+
+    .img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+        }
+    }
+
+    .label {
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+    }
+}

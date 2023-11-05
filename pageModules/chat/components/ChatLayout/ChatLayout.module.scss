@@ -1,0 +1,29 @@
+.wrapper {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    
+    .top {
+        padding: 5px;
+    }
+
+    .main {
+
+    }
+
+    .bottom {
+
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        margin-left: -15px;
+        margin-right: -15px;
+        width: calc(100% + 30px);
+
+        .top {
+            padding: 0;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+.wrapper {
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    width: 100%;
+    // border: 1px solid red;
+    z-index: 500;
+    background-color: #fff; 
+    display: none;
+    
+    .in {
+        padding: 10px;
+        display: flex;
+        // align-items: center;
+        justify-content: space-between;
+
+        .item {
+            margin: 0 2px;
+            width: 100%;
+            
+            .btn {
+                height: 100%;
+                min-height: 40px;
+                width: 100%;
+                border-radius: 8px;
+                // border: 1px solid red;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #353535;
+                position: relative;
+
+                .badge {
+                    position: absolute;
+                    top: 0;
+                    right: 5px;
+                    background-color: var(--violet);
+                    color: #fff;
+                    font-size: 9px;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 100%;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .btn.active {
+                background-color: #F0EBFF;
+                color: #6862ED;
+            }
+            .btn.market {
+                color: #fff;
+                // background: linear-gradient(92.47deg, #9C58EA 0.84%, #6C60EC 114.36%);
+                background: linear-gradient(270deg, #DE900B 0%, #FFCA0E 100%);
+
+            }
+
+            .btn.market.active {
+                background-color: unset;
+                background: linear-gradient(92.47deg, #9C58EA 0.84%, #6C60EC 114.36%);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        display: block;
+    }
+}

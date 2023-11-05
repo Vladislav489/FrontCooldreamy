@@ -1,0 +1,28 @@
+.wrapper {
+
+    .action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        button {
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 140%;
+            letter-spacing: 0.05em;
+            color: var(--gray);
+            transition: all .3s ease;
+            cursor: pointer;
+            font-weight: 600;
+            
+            &:active {
+                transform: scale(0.95);
+            }
+
+            &:hover {
+                color: var(--red);
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.wrapper {
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 10px 12px;
+  display: flex;  
+  align-items: center;
+  justify-content: space-between;
+
+  .main {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+
+    .icon {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+    .body {
+      padding-left: 8px;
+
+      .title {
+        font-size: 16px;
+        line-height: 23px;
+        font-weight: 600;
+      }
+
+      .value {
+        font-size: 15px;
+        line-height: 23px;
+      }
+
+    }
+  }
+  .action {
+    width: 50%;
+
+    .btn {
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.wrapper.premium {
+  .main {
+    .icon {
+      background-image: url('../../public/assets/icons/status-premium.svg');
+    }
+    .body {
+      .title {
+        color: #FFA31A;
+      }
+    }
+  }
+}
+
+.wrapper.vip {
+  .main {
+    .icon {
+      background-image: url('../../public/assets/icons/premium-adv-icon.svg');
+      background-color: #EC82FF;
+      background-size: 80%;
+    }
+    .body {
+      .title {
+        color: #1E85FE;
+      }
+    }
+  }
+}
+
+.wrapper.credits {
+  .main {
+    .icon {
+      background-image: url('../../public/assets/icons/status-credits.svg');
+    }
+    .body {
+      .title {
+        color: var(--violet);
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+.wrapper {
+
+    .input_wrapper {
+        position: relative;
+
+        .valid_icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            line-height: 24px;
+            color: var(--violet);
+            top: calc(50% - 12px);
+            right: 12px;
+            position: absolute;
+
+        }
+
+        .input {
+            // min-height: 47px;
+            padding: 10px 12px;
+            padding-right: calc(24px + 15px);
+            font-size: 18px;
+            line-height: 150%;
+            background: #FFFFFF;
+            border: 2px solid var(--light_purp_2);
+            border-radius: 30px;
+            display: block;
+            width: 100%;
+            transition: all .3s ease;
+
+
+            &:focus {
+                box-shadow: 0 0 0 3px rgba(#D9D4FF, .7);
+            }
+            
+        }
+
+        .before_icon {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: calc(50% - 12px);
+            left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            line-height: 100%;
+        }
+
+        .after_icon {
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: calc(50% - 12px);
+            right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            line-height: 100%;
+        }
+    }
+    
+    .error {
+        margin-top: 2px;
+        font-size: 11px;
+        line-height: 150%;
+        color: var(--red);
+    }
+}
+
+.wrapper.error {
+
+    .input_wrapper {
+
+        .input {
+            border-color: var(--red);
+            color: var(--red);
+        }
+    }
+}
+
+.wrapper.before {
+    .input_wrapper {
+
+
+        .input {
+            padding-left: 45px;
+        }
+    }
+}

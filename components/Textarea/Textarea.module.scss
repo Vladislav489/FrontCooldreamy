@@ -1,0 +1,16 @@
+.wrapper {
+    padding: 10px 12px;
+    padding-right: calc(24px + 15px);
+    font-size: 18px;
+    line-height: 150%;
+    background: #FFFFFF;
+    border: 2px solid var(--light_purp_2);
+    border-radius: 30px;
+    display: block;
+    width: 100%;
+    transition: box-shadow .3s ease;
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba(#D9D4FF, .7);
+    }
+}

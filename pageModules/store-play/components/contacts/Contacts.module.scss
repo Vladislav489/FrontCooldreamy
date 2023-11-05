@@ -1,0 +1,48 @@
+.wrapper {
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    .label {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 32px;
+    }
+    .icon {
+      font-size: 18px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .body {
+    height: 0;
+    overflow: hidden;
+    transition: all .3s ease;
+
+    .item {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: flex-start;
+      cursor: pointer;
+
+      .icon {
+        font-size: 18px;
+        line-height: 18px;
+        flex:  0 0 auto;
+      }
+      .body {
+        .label {
+
+        }
+        .text {
+
+        }
+      }
+    }
+  }
+}

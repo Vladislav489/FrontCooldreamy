@@ -1,0 +1,41 @@
+.wrapper {
+    padding: 0 25px;
+    width: 100%;
+
+    .item {
+        padding: 25px 10px;
+        min-height: 101px;
+        display: flex;
+        align-items: flex-start;
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            flex: 0 0 auto;
+            border-radius: 100%;
+            background-color: var(--light_purp_1);
+             animation: sk-anim 1s linear infinite;
+        }
+        .body {
+            width: 100%;
+            border-radius: 10px;
+            background-color: var(--light_purp_1);
+            animation: sk-anim 1s linear infinite;
+            height: 50px;
+            
+        }
+    }
+}
+
+@keyframes sk-anim {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

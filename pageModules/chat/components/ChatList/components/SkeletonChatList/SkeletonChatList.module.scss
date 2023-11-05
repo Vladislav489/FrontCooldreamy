@@ -1,0 +1,41 @@
+.wrapper {
+    width: 100%;
+
+    .item {
+        width: 100%;
+        padding: 10px 12px;
+        display: flex;
+        align-items: flex-start;
+
+        .avatar {
+            width: 63px;
+            height: 63px;
+            border-radius: 8px;
+            flex: 0 0 auto;
+            margin-right: 10px;
+            background-color: var(--light_purp_1);
+            animation: sk-anim 1s linear infinite;
+        }
+
+        .body {
+            width: 100%;
+            height: 63px;
+            background-color: var(--light_purp_1);
+            animation: sk-anim 1s linear infinite;
+            border-radius: 8px;
+        }
+    }
+}
+
+
+@keyframes sk-anim {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

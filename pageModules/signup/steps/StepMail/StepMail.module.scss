@@ -1,0 +1,106 @@
+.wrapper {
+  .head {
+    text-align: center;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto;
+
+    .title {
+      font-size: 24px;
+    }
+
+    .subtitle {
+      color: rgba(53, 53, 53, 0.70);
+      line-height: 25px;
+      font-size: 18px;
+    }
+  }
+
+  .body {
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+    // border-bottom: 1px solid var(--gray);
+
+    .label {
+      color: rgba(53, 53, 53, 0.50);
+      font-size: 18px;
+    }
+
+    .value {
+      font-size: 22px;
+      line-height: 22px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .change {
+      color: var(--violet);
+      transition: all .3s ease;
+      cursor: pointer;
+      &:hover {
+        color: var(--purp);
+      }
+    }
+
+  }
+
+  .ex {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+
+
+    .ex_title {
+      text-align: center;
+      //font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .ex_part {
+      display: flex;
+      align-items: flex-start;
+
+      .ex_icon {
+        flex: 0 0 auto;
+        border-radius: 100%;
+        width: 60px;
+        height: 60px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .ex_text {
+        padding-left: 10px;
+        font-size: 18px;
+
+
+      }
+    }
+
+    .ex_part.first {
+      .ex_icon {
+        background-image: url('../../../../public/assets/icons/signup-email-1.svg');
+      }
+    }
+    .ex_part.second {
+      .ex_icon {
+        background-image: url('../../../../public/assets/icons/signup-email-2.svg');
+      }
+    }
+    .ex_part.third {
+      .ex_icon {
+        background-image: url('../../../../public/assets/icons/signup-email-3.svg');
+      }
+    }
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+}
