@@ -102,7 +102,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 				<title>Cool Dreamy</title>
-				
+				<script src="//code.jivo.ru/widget/3iJnvV4OIN" async></script>
 			</Head>
 			<Script
 				strategy="afterInteractive"
