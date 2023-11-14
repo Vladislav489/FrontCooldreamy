@@ -1,6 +1,6 @@
 export const BASE_WS_HOST = 'api2.cooldreamy.com'
 export const TEST_WS_HOST = 'admin.soultri.site'
-export const BASE_DOMAIN = `https://api2.cooldreamy.fun/`;
+export const BASE_DOMAIN = `https://api2.cooldreamy.com/`;
 export const TEST_DOMAIN = `http://admin.soultri.site/`;
 export const API_PATH = `${BASE_DOMAIN}api/`;
 
