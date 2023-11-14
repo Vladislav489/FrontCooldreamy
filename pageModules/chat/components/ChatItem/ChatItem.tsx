@@ -253,9 +253,7 @@ const ChatItem = ({
             </div> 
         </div>
     )
-    return null
-
-    
+    return null   
 }
 
 export default ChatItem;

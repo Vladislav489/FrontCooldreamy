@@ -108,7 +108,7 @@ const DialogItemComponent:FC<I> = ({
                 return (
                     <div className={styles.media}>
                         {
-                            is_payed === 1 || isSelf ? (
+                            /* is_payed === 1 || isSelf */ true ? (
                                 <>
                                     <FancyboxWrapper>
                                         <div className={styles.body}>

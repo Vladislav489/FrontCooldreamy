@@ -1,6 +1,6 @@
 export const BASE_WS_HOST = 'api2.cooldreamy.com'
 export const TEST_WS_HOST = 'admin.soultri.site'
-export const BASE_DOMAIN = `https://api2.cooldreamy.com/`;
+export const BASE_DOMAIN = `https://api2.cooldreamy.fun/`;
 export const TEST_DOMAIN = `http://admin.soultri.site/`;
 export const API_PATH = `${BASE_DOMAIN}api/`;
 
@@ -23,7 +23,7 @@ const endpoints = {
     search: `${API_PATH}users/search`,
     getPromptTargets: `${API_PATH}get_prompt_targets_table`,
     getPromptFinanceState: `${API_PATH}get_prompt_finance_states_table`,
-    
+
     getCountries: `${API_PATH}get_countries`,
     getStates: `${API_PATH}get_states`,
 
@@ -38,7 +38,7 @@ const endpoints = {
 
 
     //wink
-    sendWink: `${API_PATH}wink/send_wink`,    
+    sendWink: `${API_PATH}wink/send_wink`,
 
 
     getStickers: `${API_PATH}get_stickers`,
@@ -73,7 +73,7 @@ const endpoints = {
 
     mailOpenPay: `${API_PATH}letters/pay_for_letter_text_message`,
     mailImagePay: `${API_PATH}letters/pay_for_letter_image`,
-    
+
 
     //profile
     getMyProfile: `${API_PATH}profile/get_my_profile`,
@@ -130,7 +130,7 @@ const endpoints = {
 
 
     setExUserData: `${API_PATH}user/set/info`,
-    
+
     checkPhotoAi: `${API_PATH}check-image`,
 
     getUnreadCount: `${API_PATH}chats/unread`,
