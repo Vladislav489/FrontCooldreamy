@@ -8,31 +8,44 @@ const CardAdv = ({
     selected, 
     onSelect, 
     onAccept, 
-    load
+    load,
+    onClick,
+    title,
+    subtitle,
+    description,
+    submitText
 }: {
     list?: any[], 
     selected: any, 
     onSelect: any, 
     onAccept: (...args: any[]) => any, 
-    load: boolean
+    load: boolean,
+    onClick?: any,
+    title?: string,
+    subtitle?: string,
+    description?: string,
+    submitText?: string
 }) => {
    
     return (
         <div className={styles.wrapper}>
             <div className={styles.in}>
                 <div className={styles.title}>
-                    Premium status
+                    {title ?? 'Premium status'}
                 </div>
                 <div className={styles.icon}>
                     <div className={styles.icon_img}></div>
                 </div>
                 <div className={styles.body}>
                     <div className={styles.head}>
-                        Buy Premium and 
-                        chat without limits
+                        {
+                            subtitle ?? 'Buy Premium and chat without limits'
+                        }
                     </div>
                     <div className={styles.text}>
-                    With a subscription, enjoy unlimited chat and free allowances for sending photos and videos.
+                       {
+                        description ?? 'With a subscription, enjoy unlimited chat and free allowances for sending photos and videos.'
+                       }
                     </div>
                     <div className={styles.list}>
                         {
@@ -98,10 +111,10 @@ const CardAdv = ({
                     <Button
                         load={load && selected?.type === 'subscription'}
                         variant={'default'}
-                        onClick={onAccept}
+                        onClick={onClick ?? onAccept}
                         fill
                         disabled={selected?.type !== 'subscription'}
-                        text={'Buy Premium'}
+                        text={submitText??'Buy Premium'}
                         />
                 </div>
             </div>
