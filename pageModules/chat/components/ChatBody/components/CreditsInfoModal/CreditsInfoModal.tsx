@@ -24,7 +24,7 @@ const CreditsInfoModal:FC<ModalFuncProps> = (props) => {
                         When the credits are spent, you'll need to buy a paid subscription
                     </div> */}
                     <div style={{ width: '100%', display: 'flex', justifyContent: 'space-around'}}>
-                    <CardAdv onClick={() => Router.push(`/deposit-mb?tab=2`)} selected={{ type: 'subscription'}} onSelect={() => {}} load={false} title='Unlimited Communication Subscription' subtitle='Get a subscription and chat freely!' description='With your subscription, you can chat without limits and enjoy free allowances for sending and receiving photo or video content.' submitText='Go to store' />
+                    <CardAdv onAccept={() => {}} onClick={() => Router.push(`/deposit-mb?tab=2`)} selected={{ type: 'subscription'}} onSelect={() => {}} load={false} title='Unlimited Communication Subscription' subtitle='Get a subscription and chat freely!' description='With your subscription, you can chat without limits and enjoy free allowances for sending and receiving photo or video content.' submitText='Go to store' />
                     </div>
                 </Col>
                 {/* <Col span={24}>
