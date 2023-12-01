@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './PayForm.module.scss';
 import { useStripe, useElements } from '@stripe/react-stripe-js';
 import { PaymentElement } from '@stripe/react-stripe-js';
-import {Row, Col} from 'antd';
+import {Row, Col, Input} from 'antd';
 import Button from '@/components/Button/Button';
 import { useAppSelector } from '@/hooks/useTypesRedux';
 import notify from '@/helpers/notify';
@@ -53,6 +53,8 @@ const PayForm = ({plan, type, secretKey}: {plan?: any, type?: string, price?: nu
     const {locale} = useAppSelector(s => s)
     const stripe = useStripe()
     const elements = useElements()
+    const [email, setEmail] = useState('');
+    const [fullName, setFullName] = useState('');
     
 
 
@@ -67,7 +69,13 @@ const PayForm = ({plan, type, secretKey}: {plan?: any, type?: string, price?: nu
             const {error} = await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    return_url: switchRedirect(plan?.id, type), 
+                    return_url: switchRedirect(plan?.id, type),
+                    payment_method_data: {
+                        billing_details: {
+                            name: fullName,
+                            email: email
+                        }
+                    }
                 },
                 redirect: 'if_required'
             })
@@ -98,7 +106,21 @@ const PayForm = ({plan, type, secretKey}: {plan?: any, type?: string, price?: nu
             <form id='payment-form' onSubmit={onPay}>
                 <Row gutter={[15,15]}>
                     <Col span={24}>
-                        <PaymentElement/>
+                        <div style={{ display: 'flex', width: '100%', flexDirection: 'column', gap: 12}}>
+                            <Input
+                                placeholder="Enter your full name"
+                                value={fullName}
+                                required
+                                onChange={(e) => setFullName(e.target.value)}
+                            />
+                            <Input
+                                placeholder="Enter your email"
+                                value={email}
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <PaymentElement/>
+                        </div>
                     </Col>
                     <Col span={24} style={{display: 'flex', justifyContent: 'center'}}>
                         {
