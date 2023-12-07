@@ -2,6 +2,7 @@ import Button from '@/components/Button/Button';
 import styles from './CardAdv.module.scss';
 import {AiFillStar} from 'react-icons/ai'
 import * as _ from 'lodash';
+import {getSubscriptionTime} from "@/helpers/getSubscriptionTime";
 
 const CardAdv = ({
     list, 
@@ -26,6 +27,7 @@ const CardAdv = ({
     description?: string,
     submitText?: string
 }) => {
+    console.log('list', list)
    
     return (
         <div className={styles.wrapper}>
@@ -60,8 +62,7 @@ const CardAdv = ({
                                                 <input type="radio" checked={i?.id == selected?.value && selected?.type == 'subscription'}/>
                                                 <label className={styles.label} htmlFor="">
                                                     <div className={styles.value}>
-                                                    {_.round(i?.duration / 1440, 2)} <br/>
-                                                    days
+                                                        {getSubscriptionTime(i?.duration)}
                                                     </div>
                                                     <div className={styles.info}>
                                                         <span>Photos: {i?.count_watch_or_send_photos}</span>
@@ -84,8 +85,7 @@ const CardAdv = ({
                                                 <input type="radio" checked={i?.id == selected?.value && selected?.type == 'subscription'}/>
                                                 <label className={styles.label} htmlFor="">
                                                     <div className={styles.value}>
-                                                    {_.round(i?.duration / 1440, 2)} <br/>
-                                                    days
+                                                        {getSubscriptionTime(i?.duration)}
                                                     </div>
                                                     <div className={styles.info}>
                                                         <span>Photos: {i?.count_watch_or_send_photos}</span>
