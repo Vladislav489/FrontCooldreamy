@@ -27,7 +27,6 @@ const CardAdv = ({
     description?: string,
     submitText?: string
 }) => {
-    console.log('list', list)
    
     return (
         <div className={styles.wrapper}>

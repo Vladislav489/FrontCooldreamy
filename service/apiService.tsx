@@ -1031,7 +1031,7 @@ class ApiService {
         list_id?: string | number
     }) => {
         try {
-            let res = await fetch(endpoints.pay, {
+            let res = await fetch(endpoints.payStripe, {
                 method: 'POST',
                 headers: {
                     ...headers,
@@ -1039,6 +1039,7 @@ class ApiService {
                 },
                 body: JSON.stringify(body)
             })
+
             return await res?.json()
         } catch(err) {
             return;

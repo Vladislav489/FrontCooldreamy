@@ -119,6 +119,7 @@ const endpoints = {
 
     //credits
     pay: `${API_PATH}payments/pay`,
+    payStripe: `${API_PATH}payments/pay1`,
     payS: `${API_PATH}payments/subscribe`,
     getPayPlans: `${API_PATH}payments/credits/list`,
     getPaySubs: `${API_PATH}payments/subscription/list`,

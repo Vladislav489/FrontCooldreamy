@@ -153,8 +153,15 @@ const DepositPage = () => {
                 list_type: selected?.type,
                 list_id: selected?.value
             }).then(res => {
-                const clientSecret = res?.clientSecret;
-                setSecretKey(clientSecret)
+                if (res.url) {
+                    // @ts-ignore
+                    window.open(res.url, '_blank').focus();
+                } else {
+                    if(res?.clientSecret) {
+                        const clientSecret = res?.clientSecret;
+                        setSecretKey(clientSecret)
+                    } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+                }
             }).finally(() => setLoad(false))
         }
         if(selected?.type === 'premium') {
@@ -162,21 +169,32 @@ const DepositPage = () => {
                 list_type: selected?.type,
                 list_id: selected?.value
             }).then(res => {
-                if(res?.clientSecret) {
-                  const clientSecret = res?.clientSecret;
-                  setSecretKey(clientSecret)
-                } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+                if (res.url) {
+                    // @ts-ignore
+                    window.open(res.url, '_blank').focus();
+                } else {
+                    if(res?.clientSecret) {
+                        const clientSecret = res?.clientSecret;
+                        setSecretKey(clientSecret)
+                    } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+                }
             }).finally(() => setLoad(false))
         }
         if(selected?.type === 'subscription') {
+
             service.pay(token, {
                 list_type: selected?.type,
                 list_id: selected?.value
             }).then(res => {
-                if(res?.clientSecret) {
-                  const clientSecret = res?.clientSecret;
-                  setSecretKey(clientSecret)
-                } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+                if (res.url) {
+                    // @ts-ignore
+                    window.open(res.url, '_blank').focus();
+                } else {
+                    if(res?.clientSecret) {
+                        const clientSecret = res?.clientSecret;
+                        setSecretKey(clientSecret)
+                    } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+                }
             }).finally(() => setLoad(false))
         }
     }
@@ -186,8 +204,15 @@ const DepositPage = () => {
         list_type: plan?.type,
         list_id: plan?.value
       }).then(res => {
-          const clientSecret = res?.clientSecret;
-          setSecretKey(clientSecret)
+          if (res.url) {
+              // @ts-ignore
+              window.open(res.url, '_blank').focus();
+          } else {
+              if(res?.clientSecret) {
+                  const clientSecret = res?.clientSecret;
+                  setSecretKey(clientSecret)
+              } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+          }
       }).finally(() => setLoad(false))
     }
   }

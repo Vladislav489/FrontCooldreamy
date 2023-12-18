@@ -13,6 +13,7 @@ import PayForm from '../PayForm/PayForm';
 import { useWindowSize } from 'usehooks-ts';
 import { PulseLoader } from 'react-spinners';
 import {RiMoneyDollarCircleFill} from 'react-icons/ri';
+import notify from "@/helpers/notify";
 
 const service = new ApiService()
 const PUBLIC_KEY = 'pk_live_51MzlPfFjkPZRdnX1xG5oZ2f5LVylisRVV2O6Ym7c20knPF5GsjuKfcdl6fE3oXmqLIKwjhNNw4id48bpOXOC4n3R00zouqX2k9';
@@ -91,8 +92,15 @@ const Main = () => {
         list_type: type,
         list_id: plan?.id
       }).then(res => {
-        const clientSecret = res?.clientSecret;
-        setSecretKey(clientSecret)
+        if (res.url) {
+          // @ts-ignore
+          window.open(res.url, '_blank').focus();
+        } else {
+          if(res?.clientSecret) {
+            const clientSecret = res?.clientSecret;
+            setSecretKey(clientSecret)
+          } else notify(locale?.global?.notifications?.error_default, 'ERROR')
+        }
       }).finally(() => setLoad(false))
     }
   }
