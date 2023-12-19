@@ -1029,6 +1029,7 @@ class ApiService {
     pay = async (token: IToken, body: {
         list_type?: string,
         list_id?: string | number
+        list_stripe_id?: any
     }) => {
         try {
             let res = await fetch(endpoints.payStripe, {

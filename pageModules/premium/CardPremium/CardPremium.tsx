@@ -22,7 +22,7 @@ const CardPremium = ({
     load,
     onAccept
 }: I) => {  
-    
+    console.log('prem', list)
 
 
     return (
@@ -47,10 +47,10 @@ const CardPremium = ({
                                     if(index === 0) {
                                         return (
                                             <div 
-                                                onClick={() => onSelect({value: i?.id, type: 'premium'})}
+                                                onClick={() => onSelect({value: i?.stripe_id, type: 'premium'})}
                                                 className={styles.item} key={i?.id}>
                                                 {list?.find(i => i.one_time === 1) && <div className={styles.onetime}><span><AiFillStar/></span>SALE</div>}
-                                                <input type="radio" checked={selected?.value == i?.id && selected?.type == 'premium'}/>
+                                                <input type="radio" checked={selected?.value == i?.stripe_id && selected?.type == 'premium'}/>
                                                 <label className={styles.label}>
                                                     <div className={styles.date}>
                                                         <span>
@@ -70,9 +70,9 @@ const CardPremium = ({
                                     } else {
                                         return (
                                             <div 
-                                                onClick={() => onSelect({value: i?.id, type: 'premium'})}
+                                                onClick={() => onSelect({value: i?.stripe_id, type: 'premium'})}
                                                 className={styles.item} key={i?.id}>
-                                                <input type="radio" checked={selected?.value == i?.id && selected?.type == 'premium'}/>
+                                                <input type="radio" checked={selected?.value == i?.stripe_id && selected?.type == 'premium'}/>
                                                 <label className={styles.label}>
                                                     <div className={styles.date}>
                                                         <span>

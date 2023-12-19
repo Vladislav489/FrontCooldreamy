@@ -149,9 +149,10 @@ const DepositPage = () => {
     if(token && selected) {
         setLoad(true)
         if(selected?.type === 'credit') {
+
             service.pay(token, {
                 list_type: selected?.type,
-                list_id: selected?.value
+                list_stripe_id: selected?.value
             }).then(res => {
                 if (res.url) {
                     // @ts-ignore
@@ -165,9 +166,10 @@ const DepositPage = () => {
             }).finally(() => setLoad(false))
         }
         if(selected?.type === 'premium') {
+
             service.pay(token, {
                 list_type: selected?.type,
-                list_id: selected?.value
+                list_stripe_id: selected?.value
             }).then(res => {
                 if (res.url) {
                     // @ts-ignore
@@ -184,7 +186,7 @@ const DepositPage = () => {
 
             service.pay(token, {
                 list_type: selected?.type,
-                list_id: selected?.value
+                list_stripe_id: selected?.value
             }).then(res => {
                 if (res.url) {
                     // @ts-ignore
@@ -202,7 +204,7 @@ const DepositPage = () => {
       setLoad(true)
       service.pay(token, {
         list_type: plan?.type,
-        list_id: plan?.value
+          list_stripe_id: plan?.value
       }).then(res => {
           if (res.url) {
               // @ts-ignore

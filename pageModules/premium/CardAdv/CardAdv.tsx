@@ -55,10 +55,10 @@ const CardAdv = ({
                                     if(index === 0) {
                                         return (
                                             <div 
-                                                onClick={() => onSelect({value: i?.id, type: 'subscription'})}
+                                                onClick={() => onSelect({value: i?.stripe_id, type: 'subscription'})}
                                                 className={styles.item} key={i?.id}>
                                                 <div className={styles.onetime}><span><AiFillStar/></span>SALE</div>
-                                                <input type="radio" checked={i?.id == selected?.value && selected?.type == 'subscription'}/>
+                                                <input type="radio" checked={i?.stripe_id == selected?.value && selected?.type == 'subscription'}/>
                                                 <label className={styles.label} htmlFor="">
                                                     <div className={styles.value}>
                                                         {getSubscriptionTime(i?.duration)}
@@ -79,9 +79,9 @@ const CardAdv = ({
                                     } else {    
                                         return (
                                             <div 
-                                                onClick={() => onSelect({value: i?.id, type: 'subscription'})}
+                                                onClick={() => onSelect({value: i?.stripe_id, type: 'subscription'})}
                                                 className={styles.item} key={i?.id}>
-                                                <input type="radio" checked={i?.id == selected?.value && selected?.type == 'subscription'}/>
+                                                <input type="radio" checked={i?.stripe_id == selected?.value && selected?.type == 'subscription'}/>
                                                 <label className={styles.label} htmlFor="">
                                                     <div className={styles.value}>
                                                         {getSubscriptionTime(i?.duration)}

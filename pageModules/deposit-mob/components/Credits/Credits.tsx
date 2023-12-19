@@ -105,7 +105,7 @@ const Credits:FC<I> = ({
         {
           promo && (
             <div className={`${styles.list} ${styles.one}`}>
-              <div className={`${styles.item_wr} ${selectedPlan?.id == promo?.id ? styles?.active : ''}`}>
+              <div className={`${styles.item_wr} ${selectedPlan?.id == promo?.stripe_id ? styles?.active : ''}`}>
                 <div className={styles.item}>
                   <div className={styles.kl}>
                     <div className={styles.badge}>{locale?.depositPage?.card?.spec_offer}!</div>
@@ -129,13 +129,14 @@ const Credits:FC<I> = ({
                   <div className={styles.action}>
                     <Button
                       onClick={() => {
-                        onSelect && onSelect({value: promo?.id, type: 'credit'})
-                        onAccept && onAccept({value: promo?.id, type: 'credit'})
+                        console.log(promo)
+                        onSelect && onSelect({value: promo?.stripe_id, type: 'credit'})
+                        onAccept && onAccept({value: promo?.stripe_id, type: 'credit'})
                         goToPayment()
                       }}
-                      load={load && selected?.value === promo?.id}
+                      load={load && selected?.value === promo?.stripe_id}
                       middle={width <= 768}
-                      text='Buy' 
+                      text='Buy'
                       variant={'black'}/>
                   </div>
                 </div>
@@ -202,7 +203,7 @@ const Credits:FC<I> = ({
                               }}
                               load={load && selected?.value === i?.id}
                               middle={width <= 768}
-                              text='Buy' 
+                              text='Buy'
                               variant={'black'}/>
                           </div>
 
@@ -259,7 +260,7 @@ const Credits:FC<I> = ({
                                 goToPayment()
                               }}
                               middle={width <= 768}
-                              text='Buy' 
+                              text='Buy'
                               load={load && selected?.value === i?.id}
                               variant={'white'}/>
                           </div>
@@ -311,7 +312,7 @@ const Credits:FC<I> = ({
                                 goToPayment()
                               }}
                               middle={width <= 768}
-                              text='Buy' 
+                              text='Buy'
                               load={load && selected?.value === i?.id}
                               variant={'black'}/>
                           </div>
