@@ -129,7 +129,6 @@ const Credits:FC<I> = ({
                   <div className={styles.action}>
                     <Button
                       onClick={() => {
-                        console.log(promo)
                         onSelect && onSelect({value: promo?.stripe_id, type: 'credit'})
                         onAccept && onAccept({value: promo?.stripe_id, type: 'credit'})
                         goToPayment()
