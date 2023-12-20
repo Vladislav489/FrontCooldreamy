@@ -20,7 +20,7 @@ const UserImageItem = ({
                 width={150}
                 height={150}
                 loader={p => p?.src && typeof p?.src === 'string' ? p.src : ''} 
-                src={image ? image : placeholder} 
+                src={image ? `https://media.cooldreamy.com/${image}` : placeholder}
                 unoptimized
                 alt=""/>
         </div>

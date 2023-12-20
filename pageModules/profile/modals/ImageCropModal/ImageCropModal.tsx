@@ -127,9 +127,10 @@ const ImageCropModal:FC<cropModalPropsType> = ({
         if(token && croppedImage) {
             setLoad(true)
             const data = new FormData()
-            createFile(croppedImage).then(res => {
+            createFile(croppedImage).then(async (res) => {
                 data.append('category_id', category.toString())
-                data.append('image', res)
+                const bs: any = await blobToBase64(res);
+                data.append('image', bs)
 
                 const checkData = new FormData()
                 checkData.append('file', res)

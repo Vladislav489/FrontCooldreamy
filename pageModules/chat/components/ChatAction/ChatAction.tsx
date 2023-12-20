@@ -16,6 +16,7 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import CompReg from '@/popups/CompReg/CompReg';
 import useUpdateBalance from '@/hooks/useUpdateBalance';
 import CreditsInfoModal from '../ChatBody/components/CreditsInfoModal/CreditsInfoModal';
+import {blobToBase64} from "@/helpers/cropImage";
 
 const service = new ApiService()
 
@@ -214,12 +215,14 @@ const ChatAction = ({
 
 
 
-    const uploadMedia = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const uploadMedia = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (type === 'chat') {
             if (e.target?.files && token && (id && typeof id === 'string')) {
                 const data = new FormData()
                 data.append('category_id', '3')
-                data.append('image', e.target.files[0])
+                const blob = e.target.files[0]
+                const bs: any = await blobToBase64(blob);
+                data.append('image', bs)
                 setLoad(true)
                 service.addProfileImage(data, token).then(res => {
                     if (res?.thumbnail_url && res?.image_url) {
