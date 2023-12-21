@@ -10,8 +10,6 @@ const UserImageItem = ({
 }: {
     image: StaticImageData | string,
 }) => {
-
-
     return (
         <div className={styles.item}>
             <Image
