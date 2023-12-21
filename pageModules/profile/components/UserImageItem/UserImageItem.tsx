@@ -14,8 +14,6 @@ const UserImageItem = ({
 
     return (
         <div className={styles.item}>
-           
-            
             <Image
                 width={150}
                 height={150}
