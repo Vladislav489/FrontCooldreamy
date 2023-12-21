@@ -102,6 +102,8 @@ const DialogItemComponent:FC<I> = ({
     }
 
 
+
+
     const switchMessageType = (type?: chatMessageTypes) => {
         switch(type) {
             case 'App\\Models\\ChatImageMessage':
