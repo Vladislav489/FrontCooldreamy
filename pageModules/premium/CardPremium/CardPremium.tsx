@@ -57,6 +57,7 @@ const CardPremium = ({
                                                 {list?.find(i => i.one_time === 1) && <div className={styles.onetime}><span><AiFillStar/></span>SALE</div>}
                                                 <input type="radio" checked={selected?.value == i?.stripe_id && selected?.type == 'premium'}/>
                                                 <label className={styles.label}>
+                                                    Test
                                                     <div className={styles.date}>
                                                         <span>
                                                             {i?.duration === 4 && i?.duration / 4}

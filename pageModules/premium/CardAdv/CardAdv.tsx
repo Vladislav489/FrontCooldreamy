@@ -33,7 +33,7 @@ const CardAdv = ({
         if (list) {
             onSelect({value: list?.[0]?.stripe_id, type: 'subscription'})
         }
-    }, [list]);
+    }, [list, onSelect]);
    
     return (
         <div className={styles.wrapper}>
