@@ -3,6 +3,7 @@ import styles from './CardAdv.module.scss';
 import {AiFillStar} from 'react-icons/ai'
 import * as _ from 'lodash';
 import {getSubscriptionTime} from "@/helpers/getSubscriptionTime";
+import {useEffect} from "react";
 
 const CardAdv = ({
     list, 
@@ -27,6 +28,12 @@ const CardAdv = ({
     description?: string,
     submitText?: string
 }) => {
+
+    useEffect(() => {
+        if (list) {
+            onSelect({value: list?.[0]?.stripe_id, type: 'subscription'})
+        }
+    }, [list]);
    
     return (
         <div className={styles.wrapper}>

@@ -21,8 +21,13 @@ const CardPremium = ({
 
     load,
     onAccept
-}: I) => {  
-    console.log('prem', list)
+}: I) => {
+
+    useEffect(() => {
+        if (list) {
+            onSelect({value: list?.[0]?.stripe_id, type: 'premium'})
+        }
+    }, [list]);
 
 
     return (
