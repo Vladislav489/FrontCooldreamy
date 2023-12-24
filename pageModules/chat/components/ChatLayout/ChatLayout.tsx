@@ -266,75 +266,75 @@ const ChatLayout = () => {
         messageBody?: any,
         dialogBody?:any
     }, type: 'read' | 'new' = 'new') => {
-        if(body?.dialogBody && body?.messageBody) {
-            if(chatType === 'chat') {
-                if(type === 'read') {
-                    if(chatList?.length > 0 && dialogsList?.length > 0) {
-                        // ?? обновление чата
-                        if(currentChatId == body?.dialogBody?.id) {   
-                            const foundMessage = chatList?.find(s =>  s?.id == body?.messageBody?.id)
-                            if(currentChatId == body?.dialogBody?.id) {
-            
-                                if(foundMessage) {
-                                    setChatList(s => {
-                                        const m = s;
-                                        const rm = m.splice(m.findIndex(i => i.id == foundMessage?.id), 1, body?.messageBody)
-                                        return sortingChatList([...m])
-                                    })   
-                                } 
-                            }
-                        }
-
-                        // ?? обновление диалогов
-                        const foundDialog = dialogsList?.find(s => s?.id == body?.dialogBody?.id) 
-                        if(foundDialog) {
-                            setDialogsList(s => {
-                                const m = s;
-                                const rm = m.splice(m.findIndex(i => i.id == foundDialog?.id), 1, body?.dialogBody)
-                                return sortingDialogList([...m])
-                            })
-                        } else {
-                            setDialogsList(s => {
-                                return sortingDialogList([body?.dialogBody, ...s])
-                            })
-                        }
-                    }
-                } else {
-                    // ?? обновление чата
-                    if(currentChatId == body?.dialogBody?.id) {           
-                        const foundMessage = chatList?.find(s =>  s?.id == body?.messageBody?.id)
-                        if(currentChatId == body?.dialogBody?.id) {
-                     
-                            if(foundMessage) {
-                                setChatList(s => {
-                                    const m = s;
-                                    const rm = m.splice(m.findIndex(i => i.id == foundMessage?.id), 1, body?.messageBody)
-                                    return sortingChatList([...m])
-                                })   
-                            } else {
-                                setChatList(s => {
-                                    return sortingChatList([body?.messageBody, ...s])
-                                })
-                            }
-                        }
-                    }
-
-                    // ?? обновление диалогов
-                    const foundDialog = dialogsList?.find(s => s?.id == body?.dialogBody?.id) 
-                    if(foundDialog) {
-                        setDialogsList(s => {
-                            const m = s;
-                            const rm = m.splice(m.findIndex(i => i.id == foundDialog?.id), 1, body?.dialogBody)
-                            return sortingDialogList([...m])
-                        })
-                    } else {
-                        setDialogsList(s => {
-                            return sortingDialogList([body?.dialogBody, ...s])
-                        })
-                    }
-                }
-            } 
-        }
+        // if(body?.dialogBody && body?.messageBody) {
+        //     if(chatType === 'chat') {
+        //         if(type === 'read') {
+        //             if(chatList?.length > 0 && dialogsList?.length > 0) {
+        //                 // ?? обновление чата
+        //                 if(currentChatId == body?.dialogBody?.id) {
+        //                     const foundMessage = chatList?.find(s =>  s?.id == body?.messageBody?.id)
+        //                     if(currentChatId == body?.dialogBody?.id) {
+        //
+        //                         if(foundMessage) {
+        //                             setChatList(s => {
+        //                                 const m = s;
+        //                                 const rm = m.splice(m.findIndex(i => i.id == foundMessage?.id), 1, body?.messageBody)
+        //                                 return sortingChatList([...m])
+        //                             })
+        //                         }
+        //                     }
+        //                 }
+        //
+        //                 // ?? обновление диалогов
+        //                 const foundDialog = dialogsList?.find(s => s?.id == body?.dialogBody?.id)
+        //                 if(foundDialog) {
+        //                     setDialogsList(s => {
+        //                         const m = s;
+        //                         const rm = m.splice(m.findIndex(i => i.id == foundDialog?.id), 1, body?.dialogBody)
+        //                         return sortingDialogList([...m])
+        //                     })
+        //                 } else {
+        //                     setDialogsList(s => {
+        //                         return sortingDialogList([body?.dialogBody, ...s])
+        //                     })
+        //                 }
+        //             }
+        //         } else {
+        //             // ?? обновление чата
+        //             if(currentChatId == body?.dialogBody?.id) {
+        //                 const foundMessage = chatList?.find(s =>  s?.id == body?.messageBody?.id)
+        //                 if(currentChatId == body?.dialogBody?.id) {
+        //
+        //                     if(foundMessage) {
+        //                         setChatList(s => {
+        //                             const m = s;
+        //                             const rm = m.splice(m.findIndex(i => i.id == foundMessage?.id), 1, body?.messageBody)
+        //                             return sortingChatList([...m])
+        //                         })
+        //                     } else {
+        //                         setChatList(s => {
+        //                             return sortingChatList([body?.messageBody, ...s])
+        //                         })
+        //                     }
+        //                 }
+        //             }
+        //
+        //             // ?? обновление диалогов
+        //             const foundDialog = dialogsList?.find(s => s?.id == body?.dialogBody?.id)
+        //             if(foundDialog) {
+        //                 setDialogsList(s => {
+        //                     const m = s;
+        //                     const rm = m.splice(m.findIndex(i => i.id == foundDialog?.id), 1, body?.dialogBody)
+        //                     return sortingDialogList([...m])
+        //                 })
+        //             } else {
+        //                 setDialogsList(s => {
+        //                     return sortingDialogList([body?.dialogBody, ...s])
+        //                 })
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     
