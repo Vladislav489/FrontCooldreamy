@@ -134,22 +134,22 @@ const ChatLayout = () => {
 
     useEffect(() => {
         let tm:any;
-        // if(token) {
-        //     tm = setInterval(updateChat, 5000)
-        // }
-        // return () => {
-        //     if(tm) clearInterval(tm)
-        // }
-    }, [token, currentChatId])
-
-    useEffect(() => {
-        let tm:any = null;
         if(token) {
-            tm = setInterval(updateDialogs, 5000)
+            tm = setInterval(updateChat, 5000)
         }
         return () => {
             if(tm) clearInterval(tm)
         }
+    }, [token, currentChatId])
+
+    useEffect(() => {
+        let tm:any = null;
+        // if(token) {
+        //     tm = setInterval(updateDialogs, 5000)
+        // }
+        // return () => {
+        //     if(tm) clearInterval(tm)
+        // }
     }, [token, filter, dialogSearchDebounce])
 
 
