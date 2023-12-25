@@ -61,18 +61,18 @@ const DialogItemComponent:FC<I> = ({
                 service.readMessage({chat_message_id: Number(id)}, token).then(res => {
                     if(res?.message === 'success') {
                         dispatch(decreaseUnreadChatCount())
-                        if(query && query?.id && typeof query?.id === 'string') {
-                            updateDialogsList && updateDialogsList((s: any) => {
-                                const m = s;
-                                const findItem = m.find((i:any) => i.id == query?.id)
-                                if(findItem) {
-                                    const rm = m.splice(m.findIndex((i:any) => i?.id == findItem?.id), 1, {...findItem, unread_messages_count: findItem?.unread_messages_count > 0 ? findItem?.unread_messages_count - 1 : findItem?.unread_messages_count})
-
-                                    return sortingDialogList([...m])
-                                }
-                                return sortingDialogList([...m])
-                            })
-                        }
+                        // if(query && query?.id && typeof query?.id === 'string') {
+                        //     updateDialogsList && updateDialogsList((s: any) => {
+                        //         const m = s;
+                        //         const findItem = m.find((i:any) => i.id == query?.id)
+                        //         if(findItem) {
+                        //             const rm = m.splice(m.findIndex((i:any) => i?.id == findItem?.id), 1, {...findItem, unread_messages_count: findItem?.unread_messages_count > 0 ? findItem?.unread_messages_count - 1 : findItem?.unread_messages_count})
+                        //
+                        //             return sortingDialogList([...m])
+                        //         }
+                        //         return sortingDialogList([...m])
+                        //     })
+                        // }
                     }
                 })
             }
