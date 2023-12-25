@@ -41,7 +41,7 @@ const Sidebar:FC = () => {
                     <Col span={24}>
                         <MyCard
                             {...userData}
-                            /> 
+                        />
                     </Col>
                     <Col span={24}>
                         <Button
@@ -50,7 +50,7 @@ const Sidebar:FC = () => {
                             middle
                             fill
                             variant={'default'}
-                            />
+                        />
                         {/* <PremiumBtn/> */}
                     </Col>
                     <Col span={24}>

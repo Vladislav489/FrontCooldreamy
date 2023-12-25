@@ -134,12 +134,12 @@ const ChatLayout = () => {
 
     useEffect(() => {
         let tm:any;
-        if(token) {
-            tm = setInterval(updateChat, 5000)
-        }
-        return () => {
-            if(tm) clearInterval(tm)
-        }
+        // if(token) {
+        //     tm = setInterval(updateChat, 5000)
+        // }
+        // return () => {
+        //     if(tm) clearInterval(tm)
+        // }
     }, [token, currentChatId])
 
     useEffect(() => {
@@ -336,8 +336,6 @@ const ChatLayout = () => {
         //     }
         // }
     }
-
-    
 
 
     return (
