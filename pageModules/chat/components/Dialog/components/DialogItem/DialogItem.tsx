@@ -76,7 +76,11 @@ const DialogItemComponent:FC<I> = ({
 
                                     return {
                                         ...el,
-                                        unread_messages_count: 0
+                                        unread_messages_count: 0,
+                                        last_message: {
+                                            ...el.last_message,
+                                            is_read_by_recepient: 1
+                                        },
                                     }
                                 });
                             })
