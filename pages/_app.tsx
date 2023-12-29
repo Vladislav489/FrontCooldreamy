@@ -25,6 +25,8 @@ import notificationRequestPermission from '@/helpers/notificationRequestPermissi
 import swRegister from '@/helpers/swRegister';
 import Script from 'next/script';
 import getClassNames from '@/helpers/getClassNames';
+import {useSearchParams} from "next/navigation";
+import {getCookie} from "@/helpers/getCookie";
 
 
 if(process?.browser) {
@@ -32,14 +34,32 @@ if(process?.browser) {
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+function setCookie(name: string,value: string,minutes: number) {
+	let expires = "";
+	if (minutes) {
+		let date = new Date();
+		date.setTime(date.getTime() + (minutes*60*1000));
+		expires = "; expires=" + date.toUTCString();
+	}
+	document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+
 const App = ({ Component, pageProps }: AppProps) => {
 	const router = useRouter()
 	const {locale} = router
 	const [wc, setWc] = useState(true)
 	const {width} = useWindowSize()
+	const searchParams = useSearchParams()
 	const [sw, setSw] = useState<ServiceWorkerRegistration | null>(null)
-	
 
+
+	useEffect(() => {
+		['utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].map(el => {
+			if (!getCookie(el)) {
+				setCookie(el, searchParams.get(el) || '', 30);
+			}
+		})
+	}, [searchParams]);
 	
 	useEffect(() => {
 		moment.locale(locale === 'ru' ? 'ru' : 'en')

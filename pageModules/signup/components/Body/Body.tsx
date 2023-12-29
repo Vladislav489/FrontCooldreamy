@@ -29,6 +29,7 @@ import SignupSearch from '../../steps/SignupSearch/SignupSearch';
 import { IUser } from '@/models/IUser';
 import notify from '@/helpers/notify';
 import LOCAL_STORAGE from '@/helpers/localStorage';
+import {getCookie} from "@/helpers/getCookie";
 
 
 
@@ -281,6 +282,11 @@ const Body:FC = () => {
                     search_age_from,
                     search_age_to,
                     search_gender,
+
+                    utm_source: getCookie('utm_source') || '',
+                    utm_medium: getCookie('utm_medium') || '',
+                    utm_campaign: getCookie('utm_campaign') || '',
+                    utm_term: getCookie('utm_term') || ''
                 }).then(res => {
                     console.log(res)
                     if(res?.token) {
