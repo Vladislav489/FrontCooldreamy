@@ -54,7 +54,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 
 	useEffect(() => {
-		['utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].map(el => {
+		['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_advertiser'].map(el => {
 			if (!getCookie(el)) {
 				setCookie(el, searchParams.get(el) || '', 30);
 			}

@@ -286,7 +286,8 @@ const Body:FC = () => {
                     utm_source: getCookie('utm_source') || '',
                     utm_medium: getCookie('utm_medium') || '',
                     utm_campaign: getCookie('utm_campaign') || '',
-                    utm_term: getCookie('utm_term') || ''
+                    utm_term: getCookie('utm_term') || '',
+                    utm_advertiser: getCookie('utm_advertiser') || '',
                 }).then(res => {
                     console.log(res)
                     if(res?.token) {
