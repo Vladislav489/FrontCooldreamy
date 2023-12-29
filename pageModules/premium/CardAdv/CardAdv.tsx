@@ -30,10 +30,16 @@ const CardAdv = ({
 }) => {
 
     useEffect(() => {
-        if (list) {
-            onSelect({value: list?.[0]?.stripe_id, type: 'subscription'})
+        console.log('list', list)
+        if (list && list.length > 0) {
+            console.log('work', list[0].stripe_id)
+            onSelect({value: list[0]?.stripe_id, type: 'subscription'})
         }
-    }, [list, onSelect]);
+    }, [list]);
+
+    useEffect(() => {
+        console.log('Selected', selected)
+    }, [selected]);
    
     return (
         <div className={styles.wrapper}>

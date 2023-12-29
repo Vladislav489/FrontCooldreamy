@@ -72,22 +72,22 @@ const DepositPage = () => {
     } else Router.push('deposit-mb?tab=2')
   }, [query])
 
-  useEffect(() => {
-    if(activeTab === '1') {
-      if(listPrem?.length > 0) {
-        setSelected({value: listPrem[1]?.id, type: 'premium'})
-      }
-    }
-    if(activeTab === '2') {
-      if(listSub) {
-        setSelected({value: listSub[1]?.id, type: 'subscription'})
-      }
-    }
-    if(activeTab === '3') {
-      setSelected(null)
-    }
-    
-  }, [activeTab, listPrem, listSub])
+  // useEffect(() => {
+  //   if(activeTab === '1') {
+  //     if(listPrem?.length > 0) {
+  //       setSelected({value: listPrem[1]?.id, type: 'premium'})
+  //     }
+  //   }
+  //   if(activeTab === '2') {
+  //     if(listSub) {
+  //       setSelected({value: listSub[1]?.id, type: 'subscription'})
+  //     }
+  //   }
+  //   if(activeTab === '3') {
+  //     setSelected(null)
+  //   }
+  //
+  // }, [activeTab, listPrem, listSub])
 
   useEffect(() => {
     setSecretKey('')
