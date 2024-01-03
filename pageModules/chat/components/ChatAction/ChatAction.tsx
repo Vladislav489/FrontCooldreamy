@@ -129,6 +129,12 @@ const ChatAction = ({
     const sendMessage = useCallback(() => {
         if (token) {
             if (query?.id && typeof query?.id === 'string') {
+                // @ts-ignore
+                window.dataLayer.push({
+                    'event' : 'send_message',
+                    'anketa': Number(query?.id),
+                    'user_id' : userData?.id
+                })
                 if (type === 'chat') {
                     setLoad(true)
                     service.sendMessage_text({

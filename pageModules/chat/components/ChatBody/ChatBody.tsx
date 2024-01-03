@@ -169,7 +169,6 @@ const ChatBody:FC<IDialogs & IChat & ChatBodyComponentType> = ({
                     setMockType('')
                 })
             }
-            
         }
     }
 
