@@ -19,6 +19,8 @@ const endpoints = {
     sendResetCode: `${API_PATH}send/code/password`,
     changePassword: `${API_PATH}send/password/change`,
 
+    sendVideo: `${API_PATH}chats/send_chat_video_message`,
+
     //users
     search: `${API_PATH}users/search`,
     getPromptTargets: `${API_PATH}get_prompt_targets_table`,

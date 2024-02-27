@@ -5,7 +5,7 @@ import { BsArrowUpShort } from 'react-icons/bs';
 import TextareaAutosize from 'react-textarea-autosize';
 import { useEffect, useState, useCallback } from 'react';
 import Stickers from './components/Stickers/Stickers';
-import ApiService from '@/service/apiService';
+import ApiService, {headers} from '@/service/apiService';
 import { useRouter } from 'next/router';
 import { PulseLoader } from 'react-spinners';
 import { useAppSelector } from '@/hooks/useTypesRedux';
@@ -17,6 +17,8 @@ import CompReg from '@/popups/CompReg/CompReg';
 import useUpdateBalance from '@/hooks/useUpdateBalance';
 import CreditsInfoModal from '../ChatBody/components/CreditsInfoModal/CreditsInfoModal';
 import {blobToBase64} from "@/helpers/cropImage";
+import endpoints from "@/service/endpoints";
+import checkAuth from "@/service/checkAuth";
 
 const service = new ApiService()
 
@@ -25,9 +27,11 @@ const ChatAction = ({
     onUpdateChat,
     getGifts,
     updateDialogsList,
-    currentUser
+    currentUser,
+                        setChatList
 }: {
     currentUser: any,
+    setChatList: any,
     setHeight: (...args: any[]) => any,
     onUpdateChat: (...args: any[]) => any,
     getGifts: (type: 'gift') => any,
@@ -161,6 +165,8 @@ const ChatAction = ({
                             //     }
                             // }))
                         } else {
+                            setChatList(res.chat.last_message)
+                            console.log(res.chat.last_message)
                             onUpdateChat({ messageBody: res?.chat?.last_message, dialogBody: res?.chat })
                             // service.getMyProfile(token).then(res => {
                             //     const {credits} = res
@@ -219,68 +225,95 @@ const ChatAction = ({
     }, [text, query, token, type])
 
 
+    const sendVideo = async (dataReq: FormData) => {
+        try {
+            let res = await fetch(endpoints.sendVideo, {
+                method: 'POST',
+                body: dataReq,
+                headers: {
+                    // 'Content-type': 'multipart/form-data',
+                    // 'Accept': 'application/json',
+                    // 'X-Localization': 'ru',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return await checkAuth(res)
+        } catch(err) {
+            return;
+        }
+    }
 
 
     const uploadMedia = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (type === 'chat') {
             if (e.target?.files && token && (id && typeof id === 'string')) {
-                const data = new FormData()
-                data.append('category_id', '3')
-                const blob = e.target.files[0]
-                const bs: any = await blobToBase64(blob);
-                data.append('image', bs)
-                setLoad(true)
-                service.addProfileImage(data, token).then(res => {
-                    if (res?.thumbnail_url && res?.image_url) {
-                        service.sendMessage_image({
-                            chat_id: id,
-                            thumbnail_url: res.thumbnail_url,
-                            image_url: res.image_url
-                        }, token).then(r => {
-                            if (r?.error) {
-                                // if(userData?.free_credits && userData?.free_credits < 3) {
-                                //     dispatch(updateSubsModal(true))
-                                // }
-                                if (res?.error === 'You need to fill in information about yoursel') {
-                                    setCr(true)
-                                } else if (res?.error === "Цена покупки превышает сумму на счету пользоваетля!") {
-                                    setCreditsInfoOpen(true)
+                const file = e.target.files[0]
+                console.log(file)
+                if (file.type === "video/quicktime") {
+                    const data = new FormData()
+                    data.append('video', file)
+                    data.append('chat_id', id)
+                    const res = await sendVideo(data)
+                    console.log(res)
+                } else {
+                    const data = new FormData()
+                    data.append('category_id', '3')
+                    const blob = e.target.files[0]
+                    const bs: any = await blobToBase64(blob);
+                    data.append('image', bs)
+                    setLoad(true)
+                    service.addProfileImage(data, token).then(res => {
+                        if (res?.thumbnail_url && res?.image_url) {
+                            service.sendMessage_image({
+                                chat_id: id,
+                                thumbnail_url: res.thumbnail_url,
+                                image_url: res.image_url
+                            }, token).then(r => {
+                                if (r?.error) {
+                                    // if(userData?.free_credits && userData?.free_credits < 3) {
+                                    //     dispatch(updateSubsModal(true))
+                                    // }
+                                    if (res?.error === 'You need to fill in information about yoursel') {
+                                        setCr(true)
+                                    } else if (res?.error === "Цена покупки превышает сумму на счету пользоваетля!") {
+                                        setCreditsInfoOpen(true)
+                                    } else {
+                                        dispatch(updateLimit({
+                                            open: true,
+                                            data: {
+                                                head: locale?.popups?.nocredit_chat_picture?.title,
+                                                // text: `${locale?.popups?.nocredit_chat_picture?.text_part_1}${currentUser?.name}
+                                                // ${locale?.popups?.nocredit_chat_picture?.text_part_2}${getPrice(actionsPricing, 'SEND_CHAT_PHOTO')}`
+                                                text: locale?.popups?.nocredit_global_chat
+                                            }
+                                        }))
+                                    }
+
                                 } else {
-                                    dispatch(updateLimit({
-                                        open: true,
-                                        data: {
-                                            head: locale?.popups?.nocredit_chat_picture?.title,
-                                            // text: `${locale?.popups?.nocredit_chat_picture?.text_part_1}${currentUser?.name} 
-                                            // ${locale?.popups?.nocredit_chat_picture?.text_part_2}${getPrice(actionsPricing, 'SEND_CHAT_PHOTO')}`
-                                            text: locale?.popups?.nocredit_global_chat
-                                        }
-                                    }))
+                                    onUpdateChat({ messageBody: r?.chat?.last_message, dialogBody: r?.chat })
+                                    // service.getMyProfile(token).then(res => {
+                                    //     const {credits} = res
+                                    //     dispatch(setFreeCredits(credits))
+                                    // })
+                                    service.getCredits(token).then(credits => {
+                                        dispatch(updateUserData({ ...userData, credits }))
+                                    })
+                                    service.getMyProfile(token).then(res => {
+                                        const { credits } = res
+                                        dispatch(setFreeCredits(credits))
+                                    })
+                                    if (userData?.is_email_verified === 0 && userData?.prompt_careers?.length > 0) {
+                                        dispatch(updateEmailModal(true))
+                                    }
                                 }
 
-                            } else {
-                                onUpdateChat({ messageBody: r?.chat?.last_message, dialogBody: r?.chat })
-                                // service.getMyProfile(token).then(res => {
-                                //     const {credits} = res
-                                //     dispatch(setFreeCredits(credits))
-                                // })
-                                service.getCredits(token).then(credits => {
-                                    dispatch(updateUserData({ ...userData, credits }))
-                                })
-                                service.getMyProfile(token).then(res => {
-                                    const { credits } = res
-                                    dispatch(setFreeCredits(credits))
-                                })
-                                if (userData?.is_email_verified === 0 && userData?.prompt_careers?.length > 0) {
-                                    dispatch(updateEmailModal(true))
-                                }
-                            }
-
-                        }).finally(() => {
-                            setLoad(false)
-                            setText('')
-                        })
-                    }
-                })
+                            }).finally(() => {
+                                setLoad(false)
+                                setText('')
+                            })
+                        }
+                    })
+                }
             }
         }
 
@@ -510,7 +543,7 @@ const ChatAction = ({
                                             id='chat_media_upload'
                                             type="file"
                                             onChange={uploadMedia}
-                                            accept='.png, .jpg, .jpeg'
+                                            accept='.png, .jpg, .jpeg, .mp4, .wmv, .avi, .webm, .mov'
                                             value=''
                                         />
                                         <IconButton

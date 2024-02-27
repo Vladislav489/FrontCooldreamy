@@ -51,6 +51,7 @@ type ChatBodyComponentType = {
     loadedDialogs?: boolean
 
     currentUser?: any,
+    addMessage: any,
 
     dialogSearch?: string,
     setDialogSearch?: (...args: any[]) => any,
@@ -81,6 +82,7 @@ const ChatBody:FC<IDialogs & IChat & ChatBodyComponentType> = ({
     loadedDialogs,
 
     currentUser,
+    addMessage,
 
     dialogSearch,
     setDialogSearch,
@@ -568,8 +570,9 @@ const ChatBody:FC<IDialogs & IChat & ChatBodyComponentType> = ({
                             ) : null
                         }
                         <div className={styles.action}>
-                            <ChatAction 
+                            <ChatAction
                                 currentUser={currentUser}
+                                setChatList={addMessage}
                                 getGifts={() => {
                                     if(mockType !== 'gift') {
                                         setMockType('gift')

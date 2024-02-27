@@ -337,6 +337,10 @@ const ChatLayout = () => {
         // }
     }
 
+    const addMessage = (data: any) => {
+        setChatList(prev => [data, ...prev])
+    }
+
 
     return (
         <div className={styles.wrapper}>
@@ -390,6 +394,7 @@ const ChatLayout = () => {
 
                             loadedDialogs={loadedDialogs}
                             currentUser={currentUser}
+                            addMessage={addMessage}
 
                             dialogSearch={dialogSearch}
                             setDialogSearch={setDialogSearch}
