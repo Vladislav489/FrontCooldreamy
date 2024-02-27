@@ -1,17 +1,24 @@
 import styles from './ChatAction.module.scss';
 import IconButton from '@/components/IconButton/IconButton';
-import { AiOutlineSmile, AiOutlineGift, AiOutlineCamera } from 'react-icons/ai';
-import { BsArrowUpShort } from 'react-icons/bs';
+import {AiOutlineSmile, AiOutlineGift, AiOutlineCamera} from 'react-icons/ai';
+import {BsArrowUpShort} from 'react-icons/bs';
 import TextareaAutosize from 'react-textarea-autosize';
-import { useEffect, useState, useCallback } from 'react';
+import {useEffect, useState, useCallback} from 'react';
 import Stickers from './components/Stickers/Stickers';
 import ApiService, {headers} from '@/service/apiService';
-import { useRouter } from 'next/router';
-import { PulseLoader } from 'react-spinners';
-import { useAppSelector } from '@/hooks/useTypesRedux';
-import { useWindowSize } from 'usehooks-ts';
-import { setCredits, setFreeCredits, updateEmailModal, updateLimit, updateSubsModal, updateUserData } from '@/store/actions';
-import { useAppDispatch } from '@/hooks/useTypesRedux';
+import {useRouter} from 'next/router';
+import {PulseLoader} from 'react-spinners';
+import {useAppSelector} from '@/hooks/useTypesRedux';
+import {useWindowSize} from 'usehooks-ts';
+import {
+    setCredits,
+    setFreeCredits,
+    updateEmailModal,
+    updateLimit,
+    updateSubsModal,
+    updateUserData
+} from '@/store/actions';
+import {useAppDispatch} from '@/hooks/useTypesRedux';
 import OutsideClickHandler from 'react-outside-click-handler';
 import CompReg from '@/popups/CompReg/CompReg';
 import useUpdateBalance from '@/hooks/useUpdateBalance';
@@ -19,17 +26,18 @@ import CreditsInfoModal from '../ChatBody/components/CreditsInfoModal/CreditsInf
 import {blobToBase64} from "@/helpers/cropImage";
 import endpoints from "@/service/endpoints";
 import checkAuth from "@/service/checkAuth";
+import {IoVideocamOutline} from "react-icons/io5";
 
 const service = new ApiService()
 
 const ChatAction = ({
-    setHeight,
-    onUpdateChat,
-    getGifts,
-    updateDialogsList,
-    currentUser,
+                        setHeight,
+                        onUpdateChat,
+                        getGifts,
+                        updateDialogsList,
+                        currentUser,
                         setChatList
-}: {
+                    }: {
     currentUser: any,
     setChatList: any,
     setHeight: (...args: any[]) => any,
@@ -42,10 +50,10 @@ const ChatAction = ({
     const [cr, setCr] = useState(false)
     const [creditsInfoOpen, setCreditsInfoOpen] = useState(false)
 
-    const { width } = useWindowSize()
-    const { token, locale, actionsPricing, userData } = useAppSelector(s => s)
-    const { query } = useRouter()
-    const { type, id } = query
+    const {width} = useWindowSize()
+    const {token, locale, actionsPricing, userData} = useAppSelector(s => s)
+    const {query} = useRouter()
+    const {type, id} = query
 
     //const [uploadedMedia, setUploadedMedia] = useState<any[]>([])
     const [stickers, setStickers] = useState(false)
@@ -53,8 +61,6 @@ const ChatAction = ({
     const [drawerPos, setDrawerPos] = useState(70);
     const [text, setText] = useState('')
     const [load, setLoad] = useState(false)
-
-
 
 
     useEffect(() => {
@@ -88,7 +94,7 @@ const ChatAction = ({
                                 }))
                             }
                         } else {
-                            onUpdateChat({ messageBody: res?.chat?.last_message, dialogBody: res?.chat })
+                            onUpdateChat({messageBody: res?.chat?.last_message, dialogBody: res?.chat})
                             // service.getCredits(token).then(credits => {
                             //     dispatch(updateUserData({...userData, credits}))
                             // })
@@ -112,9 +118,9 @@ const ChatAction = ({
                         if (res?.error) {
                             // !! ERROR
                         } else {
-                            onUpdateChat({ messageBody: res?.letter?.last_message, dialogBody: res?.letter })
+                            onUpdateChat({messageBody: res?.letter?.last_message, dialogBody: res?.letter})
                             service.getCredits(token).then(credits => {
-                                dispatch(updateUserData({ ...userData, credits }))
+                                dispatch(updateUserData({...userData, credits}))
                             })
                         }
                     })
@@ -135,9 +141,9 @@ const ChatAction = ({
             if (query?.id && typeof query?.id === 'string') {
                 // @ts-ignore
                 window.dataLayer.push({
-                    'event' : 'send_message',
+                    'event': 'send_message',
                     'anketa': Number(query?.id),
-                    'user_id' : userData?.id
+                    'user_id': userData?.id
                 })
                 if (type === 'chat') {
                     setLoad(true)
@@ -167,7 +173,7 @@ const ChatAction = ({
                         } else {
                             setChatList(res.chat.last_message)
                             console.log(res.chat.last_message)
-                            onUpdateChat({ messageBody: res?.chat?.last_message, dialogBody: res?.chat })
+                            onUpdateChat({messageBody: res?.chat?.last_message, dialogBody: res?.chat})
                             // service.getMyProfile(token).then(res => {
                             //     const {credits} = res
                             //     dispatch(setFreeCredits(credits))
@@ -209,9 +215,9 @@ const ChatAction = ({
                             //     }
                             // }))
                         } else {
-                            onUpdateChat({ messageBody: res?.letter?.last_message, dialogBody: res?.letter })
+                            onUpdateChat({messageBody: res?.letter?.last_message, dialogBody: res?.letter})
                             service.getMyProfile(token).then(res => {
-                                const { credits } = res
+                                const {credits} = res
                                 dispatch(setFreeCredits(credits))
                             })
                         }
@@ -238,82 +244,86 @@ const ChatAction = ({
                 }
             })
             return await checkAuth(res)
-        } catch(err) {
+        } catch (err) {
             return;
         }
     }
 
 
+    const uploadVideo = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (type === 'chat') {
+            if (e.target.files) {
+                const file = e.target.files[0]
+                console.log(file)
+                const data = new FormData()
+                data.append('video', file)
+                data.append('chat_id', String(id))
+                const res = await sendVideo(data)
+                console.log(res)
+            }
+        }
+    }
+
     const uploadMedia = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (type === 'chat') {
             if (e.target?.files && token && (id && typeof id === 'string')) {
-                const file = e.target.files[0]
-                console.log(file)
-                if (file.type === "video/quicktime") {
-                    const data = new FormData()
-                    data.append('video', file)
-                    data.append('chat_id', id)
-                    const res = await sendVideo(data)
-                    console.log(res)
-                } else {
-                    const data = new FormData()
-                    data.append('category_id', '3')
-                    const blob = e.target.files[0]
-                    const bs: any = await blobToBase64(blob);
-                    data.append('image', bs)
-                    setLoad(true)
-                    service.addProfileImage(data, token).then(res => {
-                        if (res?.thumbnail_url && res?.image_url) {
-                            service.sendMessage_image({
-                                chat_id: id,
-                                thumbnail_url: res.thumbnail_url,
-                                image_url: res.image_url
-                            }, token).then(r => {
-                                if (r?.error) {
-                                    // if(userData?.free_credits && userData?.free_credits < 3) {
-                                    //     dispatch(updateSubsModal(true))
-                                    // }
-                                    if (res?.error === 'You need to fill in information about yoursel') {
-                                        setCr(true)
-                                    } else if (res?.error === "Цена покупки превышает сумму на счету пользоваетля!") {
-                                        setCreditsInfoOpen(true)
-                                    } else {
-                                        dispatch(updateLimit({
-                                            open: true,
-                                            data: {
-                                                head: locale?.popups?.nocredit_chat_picture?.title,
-                                                // text: `${locale?.popups?.nocredit_chat_picture?.text_part_1}${currentUser?.name}
-                                                // ${locale?.popups?.nocredit_chat_picture?.text_part_2}${getPrice(actionsPricing, 'SEND_CHAT_PHOTO')}`
-                                                text: locale?.popups?.nocredit_global_chat
-                                            }
-                                        }))
-                                    }
-
+                const data = new FormData()
+                data.append('category_id', '3')
+                const blob = e.target.files[0]
+                const bs: any = await blobToBase64(blob);
+                data.append('image', bs)
+                setLoad(true)
+                service.addProfileImage(data, token).then(res => {
+                    if (res?.thumbnail_url && res?.image_url) {
+                        service.sendMessage_image({
+                            chat_id: id,
+                            thumbnail_url: res.thumbnail_url,
+                            image_url: res.image_url
+                        }, token).then(r => {
+                            if (r?.error) {
+                                // if(userData?.free_credits && userData?.free_credits < 3) {
+                                //     dispatch(updateSubsModal(true))
+                                // }
+                                if (res?.error === 'You need to fill in information about yoursel') {
+                                    setCr(true)
+                                } else if (res?.error === "Цена покупки превышает сумму на счету пользоваетля!") {
+                                    setCreditsInfoOpen(true)
                                 } else {
-                                    onUpdateChat({ messageBody: r?.chat?.last_message, dialogBody: r?.chat })
-                                    // service.getMyProfile(token).then(res => {
-                                    //     const {credits} = res
-                                    //     dispatch(setFreeCredits(credits))
-                                    // })
-                                    service.getCredits(token).then(credits => {
-                                        dispatch(updateUserData({ ...userData, credits }))
-                                    })
-                                    service.getMyProfile(token).then(res => {
-                                        const { credits } = res
-                                        dispatch(setFreeCredits(credits))
-                                    })
-                                    if (userData?.is_email_verified === 0 && userData?.prompt_careers?.length > 0) {
-                                        dispatch(updateEmailModal(true))
-                                    }
+                                    dispatch(updateLimit({
+                                        open: true,
+                                        data: {
+                                            head: locale?.popups?.nocredit_chat_picture?.title,
+                                            // text: `${locale?.popups?.nocredit_chat_picture?.text_part_1}${currentUser?.name}
+                                            // ${locale?.popups?.nocredit_chat_picture?.text_part_2}${getPrice(actionsPricing, 'SEND_CHAT_PHOTO')}`
+                                            text: locale?.popups?.nocredit_global_chat
+                                        }
+                                    }))
                                 }
 
-                            }).finally(() => {
-                                setLoad(false)
-                                setText('')
-                            })
-                        }
-                    })
-                }
+                            } else {
+                                onUpdateChat({messageBody: r?.chat?.last_message, dialogBody: r?.chat})
+                                // service.getMyProfile(token).then(res => {
+                                //     const {credits} = res
+                                //     dispatch(setFreeCredits(credits))
+                                // })
+                                service.getCredits(token).then(credits => {
+                                    dispatch(updateUserData({...userData, credits}))
+                                })
+                                service.getMyProfile(token).then(res => {
+                                    const {credits} = res
+                                    dispatch(setFreeCredits(credits))
+                                })
+                                if (userData?.is_email_verified === 0 && userData?.prompt_careers?.length > 0) {
+                                    dispatch(updateEmailModal(true))
+                                }
+                            }
+
+                        }).finally(() => {
+                            setLoad(false)
+                            setText('')
+                        })
+                    }
+                })
             }
         }
 
@@ -358,9 +368,9 @@ const ChatAction = ({
                                 //     }
                                 // }))
                             } else {
-                                onUpdateChat({ messageBody: r?.letter?.last_message, dialogBody: r?.letter })
+                                onUpdateChat({messageBody: r?.letter?.last_message, dialogBody: r?.letter})
                                 service.getMyProfile(token).then(res => {
-                                    const { credits } = res
+                                    const {credits} = res
                                     dispatch(setFreeCredits(credits))
                                 })
                             }
@@ -389,18 +399,18 @@ const ChatAction = ({
 
     return (
         <>
-        <div className={styles.lt}>
-            <CompReg
-                open={cr}
-                onCancel={() => setCr(false)}
-            />
-            {
-                load ? (
-                    <div className={styles.load}><PulseLoader color='var(--violet)' /></div>
-                ) : null
-            }
-            <div className={`${styles.wrapper} ${load ? styles.disabled : ''}`}>
-                {/* <AnimatePresence>
+            <div className={styles.lt}>
+                <CompReg
+                    open={cr}
+                    onCancel={() => setCr(false)}
+                />
+                {
+                    load ? (
+                        <div className={styles.load}><PulseLoader color='var(--violet)'/></div>
+                    ) : null
+                }
+                <div className={`${styles.wrapper} ${load ? styles.disabled : ''}`}>
+                    {/* <AnimatePresence>
                     {
                         stickers ? (
                             <Stickers 
@@ -412,39 +422,39 @@ const ChatAction = ({
                         ) : null
                     }   
                 </AnimatePresence> */}
-                <OutsideClickHandler
-                    onOutsideClick={() => setStickers(false)}
-                >
-                    <Stickers
-                        onClose={() => setStickers(false)}
-                        onStickerSelect={onStickerSelect}
-                        onSmileSelect={onSmileSelect}
-                        isOpened={stickers}
-                        pos={drawerPos} />
-                </OutsideClickHandler>
+                    <OutsideClickHandler
+                        onOutsideClick={() => setStickers(false)}
+                    >
+                        <Stickers
+                            onClose={() => setStickers(false)}
+                            onStickerSelect={onStickerSelect}
+                            onSmileSelect={onSmileSelect}
+                            isOpened={stickers}
+                            pos={drawerPos}/>
+                    </OutsideClickHandler>
 
-                <div className={styles.main}>
-                    <div className={styles.input}>
-                        <TextareaAutosize
-                            onKeyDown={onEnter}
-                            maxLength={300}
-                            value={text}
-                            onChange={e => setText(e.target.value)}
-                            maxRows={8}
-                            onHeightChange={e => {
-                                if (width <= 768) {
-                                    setHeight(e + 48)
-                                    setDrawerPos(e + 48)
-                                } else {
-                                    setHeight(e + 44)
-                                    setDrawerPos(e + 44)
-                                }
+                    <div className={styles.main}>
+                        <div className={styles.input}>
+                            <TextareaAutosize
+                                onKeyDown={onEnter}
+                                maxLength={300}
+                                value={text}
+                                onChange={e => setText(e.target.value)}
+                                maxRows={8}
+                                onHeightChange={e => {
+                                    if (width <= 768) {
+                                        setHeight(e + 48)
+                                        setDrawerPos(e + 48)
+                                    } else {
+                                        setHeight(e + 44)
+                                        setDrawerPos(e + 44)
+                                    }
 
-                            }}
-                            placeholder={`${locale?.chatPage.action.placeholder}...`}
-                        />
-                    </div>
-                    {/* {
+                                }}
+                                placeholder={`${locale?.chatPage.action.placeholder}...`}
+                            />
+                        </div>
+                        {/* {
                         width <= 768 ? (
                             null
                         ) : (
@@ -485,8 +495,8 @@ const ChatAction = ({
                             </div>
                         )
                     } */}
-                    <div className={styles.action}>
-                        {/* {
+                        <div className={styles.action}>
+                            {/* {
                                     width > 768 && (
                                         <div className={styles.item}>
                                             <IconButton
@@ -498,80 +508,94 @@ const ChatAction = ({
                                         </div>
                                     )
                                 } */}
-                        {
-                            type === 'mail' && (
-                                <div className={`${styles.item} ${styles.upload}`}>
-                                    <input
-                                        id='chat_media_upload'
-                                        type="file"
-                                        multiple={type === 'mail'}
-                                        onChange={uploadMedia}
-                                        accept='.png, .jpg, .jpeg'
-                                        value=''
-                                    />
-                                    <IconButton
-                                        fileId='chat_media_upload'
-                                        variant={'bordered'}
-                                        size={30}
-                                        icon={<AiOutlineCamera size={20} />}
-                                    />
-
-                                </div>
-                            )
-                        }
-                        {
-                            type === 'chat' && (
-                                <>
-                                    <div className={styles.item}>
-                                        <IconButton
-                                            onClick={() => setStickers(s => !s)}
-                                            variant={'bordered'}
-                                            size={30}
-                                            icon={<AiOutlineSmile size={20} />}
-                                        />
-                                    </div>
-                                    <div className={styles.item}>
-                                        <IconButton
-                                            onClick={getGifts}
-                                            variant={'bordered'}
-                                            size={30}
-                                            icon={<AiOutlineGift size={20} />}
-                                        />
-                                    </div>
+                            {
+                                type === 'mail' && (
                                     <div className={`${styles.item} ${styles.upload}`}>
                                         <input
                                             id='chat_media_upload'
                                             type="file"
+                                            multiple={type === 'mail'}
                                             onChange={uploadMedia}
-                                            accept='.png, .jpg, .jpeg, .mp4, .wmv, .avi, .webm, .mov'
+                                            accept='.png, .jpg, .jpeg'
                                             value=''
                                         />
                                         <IconButton
                                             fileId='chat_media_upload'
                                             variant={'bordered'}
                                             size={30}
-                                            icon={<AiOutlineCamera size={20} />}
+                                            icon={<AiOutlineCamera size={20}/>}
                                         />
 
                                     </div>
-                                </>
-                            )
-                        }
+                                )
+                            }
+                            {
+                                type === 'chat' && (
+                                    <>
+                                        <div className={styles.item}>
+                                            <IconButton
+                                                onClick={() => setStickers(s => !s)}
+                                                variant={'bordered'}
+                                                size={30}
+                                                icon={<AiOutlineSmile size={20}/>}
+                                            />
+                                        </div>
+                                        <div className={styles.item}>
+                                            <IconButton
+                                                onClick={getGifts}
+                                                variant={'bordered'}
+                                                size={30}
+                                                icon={<AiOutlineGift size={20}/>}
+                                            />
+                                        </div>
+                                        <div className={`${styles.item} ${styles.upload}`}>
+                                            <input
+                                                id='chat_media_upload'
+                                                type="file"
+                                                onChange={uploadMedia}
+                                                accept='.png, .jpg, .jpeg'
+                                                value=''
+                                            />
+                                            <IconButton
+                                                fileId='chat_media_upload'
+                                                variant={'bordered'}
+                                                size={30}
+                                                icon={<AiOutlineCamera size={20}/>}
+                                            />
+                                        </div>
+                                        <div className={`${styles.item} ${styles.upload}`}>
+                                            <input
+                                                id='chat_video_upload'
+                                                type="file"
+                                                onChange={uploadVideo}
+                                                accept='.mp4, .wmv, .avi, .webm, .mov'
+                                                value=''
+                                            />
+                                            <IconButton
+                                                fileId='chat_video_upload'
+                                                variant={'bordered'}
+                                                size={30}
+                                                icon={<IoVideocamOutline size={20}/>}
+                                            />
+                                        </div>
+                                    </>
+                                )
+                            }
 
+                        </div>
+                    </div>
+                    <div className={styles.send}>
+                        <IconButton
+                            disabled={!text}
+                            onClick={sendMessage}
+                            size={width <= 768 ? 30 : 45}
+                            icon={<BsArrowUpShort size={40}/>}
+                        />
                     </div>
                 </div>
-                <div className={styles.send}>
-                    <IconButton
-                        disabled={!text}
-                        onClick={sendMessage}
-                        size={width <= 768 ? 30 : 45}
-                        icon={<BsArrowUpShort size={40} />}
-                    />
-                </div>
             </div>
-        </div>
-        <CreditsInfoModal open={creditsInfoOpen} onCancel={() => setCreditsInfoOpen(false)} />
-    </>
+            <CreditsInfoModal open={creditsInfoOpen} onCancel={() => setCreditsInfoOpen(false)}/>
+        </>
     )
 }
 
