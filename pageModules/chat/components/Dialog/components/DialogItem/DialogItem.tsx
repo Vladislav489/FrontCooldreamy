@@ -26,7 +26,8 @@ interface I extends IMessage {
     showAvatar?: boolean,
     updateDialogsList?: (...args: any[]) => any,
     updateChatList?: (...args: any[]) => any
-    is_payed?: 1 | 0
+    is_payed?: 1 | 0,
+    data?: any
 }
 
 const DialogItemComponent:FC<I> = ({
@@ -44,6 +45,7 @@ const DialogItemComponent:FC<I> = ({
     index,
     showAvatar,
     senderUser,
+    data,
 
     is_payed,
     updateDialogsList,
@@ -115,7 +117,6 @@ const DialogItemComponent:FC<I> = ({
 
 
 
-
     const switchMessageType = (type?: chatMessageTypes) => {
         switch(type) {
             case 'App\\Models\\ChatImageMessage':
@@ -165,7 +166,21 @@ const DialogItemComponent:FC<I> = ({
                         }
                         
                     </div>
-                ) 
+                )
+            case "App\\Models\\ChatVideoMessage":
+                console.log(data)
+                return (
+                    <div className={styles.bubble}>
+                        <div className={styles.text} style={{ paddingTop: 0 }}>
+                            <video controls width="100%" style={{ maxWidth: 500}} height="100%">
+                                <source src={data.chat_messageable.video_url} type="video/mp4"/>
+                                <source src={data.chat_messageable.video_url} type="video/webm"/>
+                                <source src={data.chat_messageable.video_url} type="video/ogg"/>
+                                Your browser dont support this video
+                            </video>
+                        </div>
+                    </div>
+                )
             case "App\\Models\\ChatTextMessage":
                 return (
                     <div className={styles.bubble}>
@@ -173,7 +188,7 @@ const DialogItemComponent:FC<I> = ({
                             <p>
                                 {text}
                             </p>
-                            
+
                         </div>
                         <div className={styles.time}>{moment(updatedAt).format('hh:mm')}</div>
                     </div>      

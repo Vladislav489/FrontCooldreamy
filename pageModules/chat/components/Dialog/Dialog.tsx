@@ -67,6 +67,7 @@ const Dialog:FC<I> = ({
                             is_payed={item?.is_payed}
                             updateDialogsList={updateDialogsList}
                             updateChatList={updateChatList}
+                            data={item}
                             />
                     ))
                 }

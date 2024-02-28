@@ -13,12 +13,12 @@ const ChatCountAvilableMessages: FC = () => {
                 open={modal}
                 onCancel={() => setModal(false)}
             />
-            <div className={styles.badge}>
-                <div className={styles.label}>Messages available: {userData?.free_credits ? Math.floor(userData?.free_credits / 3) : 0} </div>
-                <div className={styles.info} onClick={() => setModal(true)}>
-                    <AiOutlineInfoCircle />
-                </div>
-            </div>
+            {/*<div className={styles.badge}>*/}
+            {/*    <div className={styles.label}>Messages available: {userData?.free_credits ? Math.floor(userData?.free_credits / 3) : 0} </div>*/}
+            {/*    <div className={styles.info} onClick={() => setModal(true)}>*/}
+            {/*        <AiOutlineInfoCircle />*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     )
 }
