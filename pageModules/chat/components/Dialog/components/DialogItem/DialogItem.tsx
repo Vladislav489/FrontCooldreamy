@@ -167,8 +167,7 @@ const DialogItemComponent:FC<I> = ({
                         
                     </div>
                 )
-            case "App\\Models\\ChatVideoMessage":
-                console.log(data)
+            case 'App\\Models\\ChatVideoMessage':
                 return (
                     <div className={styles.bubble}>
                         <div className={styles.text} style={{ paddingTop: 0 }}>
@@ -213,6 +212,7 @@ const DialogItemComponent:FC<I> = ({
                     </div>
                 )
             case "App\\Models\\ChatGiftMessage":
+                console.log(gifts)
                 return (
                     <div className={styles.media}>
                         <div className={styles.body}>

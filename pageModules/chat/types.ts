@@ -166,7 +166,8 @@ export type chatMessageTypes =
     'App\\Models\\ChatTextMessage' |
     'App\\Models\\ChatWinkMessage' | 
     'App\\Models\\ChatGiftMessage' |
-    'App\\Models\\ChatStickerMessage'
+    'App\\Models\\ChatStickerMessage' |
+    'App\\Models\\ChatVideoMessage'
 
 
 export type chatMailTypes = 
