@@ -130,7 +130,7 @@ const ChatBody:FC<IDialogs & IChat & ChatBodyComponentType> = ({
                             dispatch(updateLimit({
                                 open: true,
                                 data: {
-                                    head: 'Вам не хватает кредитов...',
+                                    head: "You haven't enough credits...",
                                     // text: `К сожалению сообщение к ${currentUser?.name} 
                                     // не доставлено. Пополните баланс. Стоимость действия: ${getPrice(actionsPricing, 'SEND_CHAT_MESSAGE')}`
                                 }

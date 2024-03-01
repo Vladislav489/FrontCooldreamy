@@ -21,15 +21,15 @@ const Tabs:FC<I> = ({
         <div className={styles.icon}></div>
         <div className={styles.label}>VIP</div>
       </button>
-      <button 
-            onClick={() => Router.push('/deposit-mb?tab=2')}
-            className={getClassNames([styles.item, styles.subscribe, activeTab == '2' && styles.active])}>
-            <div className={styles.icon}></div>
-            <div className={styles.label}>Premium</div>
-          </button>
+      {/*<button */}
+      {/*      onClick={() => Router.push('/deposit-mb?tab=2')}*/}
+      {/*      className={getClassNames([styles.item, styles.subscribe, activeTab == '2' && styles.active])}>*/}
+      {/*      <div className={styles.icon}></div>*/}
+      {/*      <div className={styles.label}>Premium</div>*/}
+      {/*    </button>*/}
           <button 
-            onClick={() => Router.push('/deposit-mb?tab=3')}
-            className={getClassNames([styles.item, styles.credits, activeTab == '3' && styles.active])}>
+            onClick={() => Router.push('/deposit-mb?tab=2')}
+            className={getClassNames([styles.item, styles.credits, activeTab == '2' && styles.active])}>
             <div className={styles.icon}></div>
             <div className={styles.label}>Credits</div>
           </button>

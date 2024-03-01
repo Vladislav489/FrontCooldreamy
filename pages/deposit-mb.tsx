@@ -250,15 +250,15 @@ const DepositPage = () => {
                   selected={selected}
                   list={listPrem}
                   />
+      // case '2':
+      //   return <CardAdv
+      //             load={load}
+      //             onAccept={onAccept}
+      //             onSelect={setSelected}
+      //             selected={selected}
+      //             list={listSub}
+      //             />
       case '2':
-        return <CardAdv 
-                  load={load}
-                  onAccept={onAccept}
-                  onSelect={setSelected}
-                  selected={selected}
-                  list={listSub}
-                  />
-      case '3':
         return <Credits
                   load={load}
                   onAccept={onAccept}
@@ -286,16 +286,16 @@ const DepositPage = () => {
       case '1':
         return {
           prev: null,
-          next: 'Premium'
+          next: 'Credits'
         }
+      // case '2':
+      //   return {
+      //     prev: 'VIP',
+      //     next: 'Credits'
+      //   }
       case '2':
         return {
           prev: 'VIP',
-          next: 'Credits'
-        }
-      case '3':
-        return {
-          prev: 'Premium',
           next: null
         }
     }
@@ -347,7 +347,7 @@ const DepositPage = () => {
                 <div className={styles.body}>
                   {switchTabs()}
                 </div>
-                <button onClick={onNext} className={getClassNames([styles.nav, styles.next, activeTab === '3' && styles.disabled])}>
+                <button onClick={onNext} className={getClassNames([styles.nav, styles.next, activeTab === '2' && styles.disabled])}>
                   <div className={styles.icon}>
                     <FiArrowRight/>
                   </div>

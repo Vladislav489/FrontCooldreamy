@@ -149,7 +149,7 @@ const Header: React.FC<any> = () => {
                                 <div className={styles.main}>
                                     {
                                         !currentSub && <div className={styles.prem}>
-                                            <PremiumBtn/>
+                                            {/*<PremiumBtn/>*/}
                                         </div>
                                     }
                                     <div className={styles.locale}>
