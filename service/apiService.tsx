@@ -1231,6 +1231,22 @@ class ApiService {
         }
     }
 
+    chatBlurPay = async (token: IToken, body: any) => {
+        try {
+            let res = await fetch(`${API_PATH}chats/pay_to_view`, {
+                method: "POST",
+                headers: {
+                    ...headers,
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(body)
+            })
+            return await res?.json()
+        } catch(err) {
+            return;
+        }
+    }
+
 
     getArticle = async (token: any, url: string) => {
         try {

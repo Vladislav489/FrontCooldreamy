@@ -115,6 +115,30 @@ const DialogItemComponent:FC<I> = ({
         }
     }
 
+    const chatBlurPay = (body: any) => {
+        if(id && token) {
+            service.chatBlurPay(token, {
+                'chat_id': body.chat_id,
+                'message_id': body.id,
+                'chat_messageable_type' : body.chat_messageable_type
+            }).then(res => {
+                if(res?.message === 'success') {
+                    updateChatList && updateChatList((s: any) => {
+                        const m = s;
+                        const findItem = m.find((i:any) => i?.id == id)
+                        const rm = m.splice(m.findIndex((i:any) => i?.id == id), 1, {...findItem, is_payed: 1})
+                        return sortingChatList([...m])
+                    })
+                    service.getCredits(token).then(credits => {
+                        dispatch(updateUserData({...userData, credits}))
+                    })
+                } else {
+                    // notify('Error', "ERROR")
+                }
+            })
+        }
+    }
+
 
 
     const switchMessageType = (type?: chatMessageTypes) => {
@@ -126,7 +150,7 @@ const DialogItemComponent:FC<I> = ({
                             /* is_payed === 1 || isSelf */ true ? (
                                 <>
                                     <FancyboxWrapper>
-                                        <div className={styles.body}>
+                                        <div className={styles.body} onClick={() => chatBlurPay(data)}>
                                             <a data-fancybox="gallery" href={images[0].image} className={styles.item}>
                                                 <Image
                                                     src={images[0].thumbnail ? images[0].thumbnail : ''}
@@ -168,16 +192,38 @@ const DialogItemComponent:FC<I> = ({
                     </div>
                 )
             case 'App\\Models\\ChatVideoMessage':
-                return (
-                    <div className={styles.bubble}>
-                        <div className={styles.text} style={{ paddingTop: 0 }}>
-                            <video controls width="100%" style={{ maxWidth: 500}} height="100%">
-                                <source src={data.chat_messageable.video_url} type="video/mp4"/>
-                                <source src={data.chat_messageable.video_url} type="video/webm"/>
-                                <source src={data.chat_messageable.video_url} type="video/ogg"/>
-                                Your browser dont support this video
-                            </video>
+                console.log(data)
+                if (data.is_payed) {
+                    return (
+                        <div className={styles.bubble} key={data.chat_messageable.video_url}>
+                            <div className={styles.text} style={{ paddingTop: 0 }}>
+                                <video controls width="100%" style={{ maxWidth: 500, maxHeight: 300 }} height="100%">
+                                    <source src={data.chat_messageable.video_url} type="video/mp4"/>
+                                    <source src={data.chat_messageable.video_url} type="video/webm"/>
+                                    <source src={data.chat_messageable.video_url} type="video/ogg"/>
+                                    Your browser dont support this video
+                                </video>
+                            </div>
                         </div>
+                    )
+                }
+
+                return (
+                    <div className={styles.media} onClick={() => chatBlurPay(data)}>
+                        <div className={styles.body}>
+                            <a data-fancybox="gallery" href={'#'} className={styles.item}>
+                                <Image
+                                    src={'https://api2.cooldreamy.com/adult_content_video.jpg'}
+                                    loader={(p) => {
+                                        return p?.src && typeof p?.src === 'string' ? p?.src : ''
+                                    }}
+                                    alt=''
+                                    width={100}
+                                    height={100}
+                                />
+                            </a>
+                        </div>
+                        <div className={styles.time}>{moment(updatedAt).format('hh:mm')}</div>
                     </div>
                 )
             case "App\\Models\\ChatTextMessage":
@@ -190,12 +236,12 @@ const DialogItemComponent:FC<I> = ({
 
                         </div>
                         <div className={styles.time}>{moment(updatedAt).format('hh:mm')}</div>
-                    </div>      
+                    </div>
                 )
             case "App\\Models\\ChatWinkMessage":
                 return (
                     <div className={styles.bubble}>
-                        <div className={styles.text}>
+                    <div className={styles.text}>
                             <motion.div
                                 initial={{opacity: 0, scale: 0}}
                                 animate={{opacity: 1, scale: 1}}
