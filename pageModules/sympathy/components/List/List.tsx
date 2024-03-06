@@ -30,7 +30,7 @@ const List = ({list, type, setPage, total}: {list: any[], type: sympGroupTypes, 
 
     return (
         <div className={styles.wrapper}>
-            <Row gutter={[12,12]}>
+            <Row gutter={[12,12]} key={'12354'}>
                 {
                     list && list?.map((item,index) => (
                         <Col

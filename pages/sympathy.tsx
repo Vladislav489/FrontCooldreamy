@@ -114,7 +114,10 @@ const SymPage = () => {
             setLoad(true)
             if(token && page) {
                 if(activeTab === 'views') {
-                    service.getActivityViews(token,{page}).then(res => {
+                    service.getActivityViews(token,{
+                        page,
+                        per_page: 10000
+                    }).then(res => {
                         setTotal(res?.data?.total)
                         if(res?.data?.data) {
                             if(page === 1) {
@@ -126,7 +129,8 @@ const SymPage = () => {
                     }).finally(() => setLoad(false))
                 }
                 if(activeTab === 'likes') {
-                    service.getActivityLikes(token, {page}).then(res => {
+                    service.getActivityLikes(token, {page,
+                        per_page: 10000}).then(res => {
                         setTotal(res?.data?.total)
                         if(res?.data?.data) {
                             if(page === 1) {
@@ -138,7 +142,8 @@ const SymPage = () => {
                     }).finally(() => setLoad(false))
                 }
                 if(activeTab === 'matches') {
-                    service.getActivityMutualLikes(token, {page}).then(res => {
+                    service.getActivityMutualLikes(token, {page,
+                        per_page: 10000}).then(res => {
                         setTotal(res?.data?.total)
                         if(res?.data?.data) {
                             if(page === 1) {
@@ -150,7 +155,8 @@ const SymPage = () => {
                     }).finally(() => setLoad(false))
                 }
                 if(activeTab === 'inlikes') {
-                    service.getActivityInLikes(token, {page}).then(res => {
+                    service.getActivityInLikes(token, {page,
+                        per_page: 10000}).then(res => {
                         setTotal(res?.data?.total)
                         if(res?.data?.data) {
                             if(page === 1) {
